@@ -1,0 +1,98 @@
+{
+    "stats": [
+        {
+            "angka": "3.870+",
+            "label": "Pengujian Dilakukan"
+        },
+        {
+            "angka": "12",
+            "label": "Ruang Lab Aktif"
+        },
+        {
+            "angka": "48+",
+            "label": "Parameter Uji"
+        },
+        {
+            "angka": "15+",
+            "label": "Tahun Pengalaman"
+        }
+    ],
+    "unit": [
+        {
+            "judul": "Laboratorium Beton",
+            "tema": "navy",
+            "ikon": "beton",
+            "desc": "Pengujian kuat tekan, kuat tarik belah, modulus elastisitas, dan karakteristik campuran beton.",
+            "items": [
+                "Uji kuat tekan beton (SNI 03-1974)",
+                "Uji slump dan flow table",
+                "Mix design beton normal",
+                "Core drill dan pengujian beton existing"
+            ]
+        },
+        {
+            "judul": "Laboratorium Aspal",
+            "tema": "gold",
+            "ikon": "aspal",
+            "desc": "Pengujian karakteristik aspal dan campuran beraspal panas untuk perkerasan jalan.",
+            "items": [
+                "Penetrasi dan titik lembek aspal",
+                "Marshall test campuran aspal",
+                "Ekstraksi dan gradasi agregat",
+                "Uji densitas dan void campuran"
+            ]
+        },
+        {
+            "judul": "Laboratorium Mekanika Tanah",
+            "tema": "teal",
+            "ikon": "tanah",
+            "desc": "Analisis sifat fisik dan mekanis tanah untuk keperluan desain pondasi dan perkerasan.",
+            "items": [
+                "Batas Atterberg (LL, PL, PI)",
+                "CBR laboratorium dan lapangan",
+                "Proctor standar dan modifikasi",
+                "Analisis saringan dan hidrometer"
+            ]
+        },
+        {
+            "judul": "Laboratorium Baja dan Struktur",
+            "tema": "red",
+            "ikon": "baja",
+            "desc": "Pengujian sifat mekanis material baja tulangan, baja profil, dan material struktur lainnya.",
+            "items": [
+                "Uji tarik baja tulangan (SNI 2052)",
+                "Uji lentur dan tekuk baja profil",
+                "Pengukuran dimensi dan berat",
+                "Analisis tegangan dan regangan"
+            ]
+        },
+        {
+            "judul": "Laboratorium Agregat",
+            "tema": "navy",
+            "ikon": "dokumen",
+            "desc": "Pengujian kualitas agregat kasar dan halus sebagai bahan baku material konstruksi.",
+            "items": [
+                "Gradasi dan analisis saringan",
+                "Keausan agregat (Los Angeles)",
+                "Berat jenis dan penyerapan air",
+                "Sand equivalent test"
+            ]
+        },
+        {
+            "judul": "Unit Sampling & Pengambilan Contoh",
+            "tema": "teal",
+            "ikon": "alat",
+            "desc": "Tim sampling lapangan yang siap mendukung pengambilan contoh uji di lokasi proyek.",
+            "items": [
+                "Sampling beton segar di lapangan",
+                "Pengambilan inti bor (core drill)",
+                "Sampling tanah undisturbed",
+                "DCP test dan plate load test"
+            ]
+        }
+    ],
+    "akreditasi": {
+        "judul": "Akreditasi KAN SNI/ISO/IEC 17025:2017",
+        "desc": "Laboratorium UPTD telah mendapatkan akreditasi dari Komite Akreditasi Nasional (KAN) berdasarkan SNI/ISO/IEC 17025:2017 — standar internasional untuk kompetensi laboratorium pengujian dan kalibrasi. Akreditasi ini menjamin bahwa setiap hasil pengujian yang kami keluarkan memenuhi standar mutu yang dapat diakui secara nasional maupun internasional."
+    }
+}

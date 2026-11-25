@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — UPTD Bina Jasa Konstruksi NTB</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#0D2545;--navy-mid:#163366;--navy-light:#1E4080;
+    --red-gov:#C0272D;--red-light:#E8353C;--gold:#D4A017;--gold-light:#F0C040;
+    --gray-50:#F7F8FA;--gray-100:#EEF0F4;--gray-200:#DDE1EA;--gray-400:#9BA3B5;
+    --gray-600:#5A6478;--gray-800:#2C3345;--text-main:#1A2035;--text-sub:#4A5568;--text-muted:#8A95A8;
+    --radius-sm:6px;--radius-md:10px;--radius-lg:16px;
+    --font-body:'Inter',system-ui,sans-serif;--font-display:'Plus Jakarta Sans',system-ui,sans-serif;
+  }
+  body{font-family:var(--font-body);color:var(--text-main);background:var(--gray-50);font-size:14px;line-height:1.55}
+  a{color:inherit}
+
+  /* ── LOGIN ── */
+  #loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy-mid),var(--navy));padding:20px}
+  .login-box{background:white;border-radius:var(--radius-lg);padding:36px;max-width:380px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+  .login-box h1{font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .login-box p{font-size:12.5px;color:var(--text-muted);margin-bottom:24px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--text-sub);margin-bottom:6px}
+  .field input,.field select,.field textarea{width:100%;padding:10px 12px;border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:white}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy-light)}
+  .btn{background:var(--navy);color:white;border:none;padding:11px 18px;border-radius:var(--radius-sm);font-size:13.5px;font-weight:700;cursor:pointer;transition:background .15s}
+  .btn:hover{background:var(--navy-light)}
+  .btn.full{width:100%}
+  .btn.red{background:var(--red-gov)} .btn.red:hover{background:var(--red-light)}
+  .btn.ghost{background:var(--gray-100);color:var(--text-main)} .btn.ghost:hover{background:var(--gray-200)}
+  .btn.sm{padding:7px 12px;font-size:12.5px}
+  .btn:disabled{opacity:.55;cursor:not-allowed}
+  .msg{font-size:13px;padding:10px 14px;border-radius:var(--radius-sm);margin-bottom:16px;display:none}
+  .msg.show{display:block}
+  .msg.err{background:#FDECEC;color:var(--red-gov);border:1px solid #F5C2C2}
+  .msg.ok{background:#EAF7EE;color:#1E7B3C;border:1px solid #B9E5C5}
+
+  /* ── APP SHELL ── */
+  #app{display:none;min-height:100vh}
+  #app.open{display:flex}
+  .sidebar{width:230px;background:var(--navy);color:white;flex-shrink:0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+  .sidebar-brand{padding:22px 20px;border-bottom:1px solid rgba(255,255,255,0.1)}
+  .sidebar-brand .name{font-family:var(--font-display);font-weight:700;font-size:14px;line-height:1.3}
+  .sidebar-brand .sub{font-size:11px;color:var(--gold-light);margin-top:4px}
+  .sidebar-nav{flex:1;padding:12px}
+  .side-link{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--radius-sm);color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;margin-bottom:2px}
+  .side-link:hover{background:rgba(255,255,255,0.08);color:white}
+  .side-link.active{background:rgba(255,255,255,0.14);color:white}
+  .side-link svg{width:16px;height:16px;flex-shrink:0}
+  .sidebar-foot{padding:14px;border-top:1px solid rgba(255,255,255,0.1)}
+
+  .main{flex:1;min-width:0}
+  .topbar{background:white;border-bottom:1px solid var(--gray-200);padding:16px 28px;display:flex;justify-content:space-between;align-items:center}
+  .topbar h2{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--navy)}
+  .content{padding:24px 28px}
+  .panel{display:none}
+  .panel.active{display:block}
+
+  .cards-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:22px}
+  .stat-box{background:white;border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:16px}
+  .stat-box .num{font-family:var(--font-display);font-size:26px;font-weight:800;color:var(--navy)}
+  .stat-box .label{font-size:12px;color:var(--text-muted);margin-top:2px}
+
+  .toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap}
+  .toolbar h3{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--navy)}
+
+  table{width:100%;border-collapse:collapse;background:white;border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--gray-200)}
+  th,td{padding:11px 14px;text-align:left;font-size:13px;border-bottom:1px solid var(--gray-100)}
+  th{background:var(--gray-50);color:var(--text-sub);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.02em}
+  tr:last-child td{border-bottom:none}
+  td.actions{display:flex;gap:6px;white-space:nowrap}
+  .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase}
+  .pill.diajukan{background:#EEF0F4;color:var(--gray-800)}
+  .pill.diproses{background:#FFF3D6;color:#8B6200}
+  .pill.selesai{background:#EAF7EE;color:#1E7B3C}
+  .pill.ditolak{background:#FDECEC;color:var(--red-gov)}
+  .pill.penting{background:#FDECEC;color:var(--red-gov)}
+  .pill.jadwal{background:#FFF3D6;color:#8B6200}
+  .pill.info{background:#E3ECFB;color:var(--navy-light)}
+  .empty-row{text-align:center;color:var(--text-muted);padding:26px}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(13,37,69,0.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
+  .modal-overlay.open{display:flex}
+  .modal-box{background:white;border-radius:var(--radius-lg);max-width:520px;width:100%;max-height:88vh;overflow-y:auto}
+  .modal-head{padding:18px 22px;border-bottom:1px solid var(--gray-200);display:flex;justify-content:space-between;align-items:center}
+  .modal-head h3{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy)}
+  .modal-close{background:var(--gray-100);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .modal-body{padding:20px 22px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .hint{font-size:11.5px;color:var(--text-muted);margin-top:4px}
+  .checkbox-row{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+  .checkbox-row input{width:auto}
+
+  @media (max-width:800px){
+    .sidebar{position:fixed;left:-230px;transition:left .2s;z-index:900}
+    .sidebar.open{left:0}
+    .form-row{grid-template-columns:1fr}
+    .hamburger-admin{display:block!important}
+  }
+  .hamburger-admin{display:none;background:none;border:none;cursor:pointer;color:var(--navy)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ LOGIN ═══════════ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <h1>Panel Admin</h1>
+    <p>UPTD Bina Jasa Konstruksi &amp; Pengujian Material Konstruksi NTB</p>
+    <div class="msg" id="loginMsg"></div>
+    <form id="loginForm" onsubmit="return doLogin(event)">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" name="username" autocomplete="username" required autofocus>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn full" type="submit" id="btnLogin">Masuk</button>
+    </form>
+    
+  </div>
+</div>
+
+<!-- ═══════════ APP ═══════════ -->
+<div id="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="name">UPTD Bina Jasa<br>Konstruksi NTB</div>
+      <div class="sub" id="userRoleLabel">Panel Admin</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="side-link active" data-panel="dashboard" onclick="gantiPanel('dashboard')">📊&nbsp; Dashboard</div>
+      <div class="side-link" data-panel="berita" onclick="gantiPanel('berita')">📰&nbsp; Berita</div>
+      <div class="side-link" data-panel="pengumuman" onclick="gantiPanel('pengumuman')">📢&nbsp; Pengumuman</div>
+      <div class="side-link" data-panel="unduhan" onclick="gantiPanel('unduhan')">📁&nbsp; Unduhan</div>
+      <div class="side-link" data-panel="konten" onclick="gantiPanel('konten')">🛠️&nbsp; Konten Website</div>
+      <div class="side-link" data-panel="permohonan" onclick="gantiPanel('permohonan')">📥&nbsp; Permohonan Masuk</div>
+      <div class="side-link" data-panel="kontak" onclick="gantiPanel('kontak')">💬&nbsp; Kontak WhatsApp</div>
+      <div class="side-link" data-panel="statistik" onclick="gantiPanel('statistik')">🔢&nbsp; Statistik Beranda</div>
+      <div class="side-link" data-panel="users" data-admin-only="1" onclick="gantiPanel('users')">👥&nbsp; Kelola Akun</div>
+      <div class="side-link" data-panel="password" onclick="gantiPanel('password')">🔒&nbsp; Ganti Password</div>
+      <div class="side-link" onclick="window.open('index.html','_blank')">🌐&nbsp; Lihat Website</div>
+    </nav>
+    <div class="sidebar-foot">
+      <div id="currentUserBox" style="font-size:11px;color:rgba(255,255,255,.65);margin-bottom:10px"></div><button class="btn ghost full sm" onclick="doLogout()">Keluar</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="hamburger-admin" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+        <h2 id="pageTitle">Dashboard</h2>
+      </div>
+    </div>
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="cards-row" id="dashCards"></div>
+        <p class="hint">Akun <b>Admin</b> memiliki akses penuh. Akun <b>Editor</b> dapat mengelola berita, pengumuman, dokumen unduhan, serta seluruh konten halaman pada menu <b>Konten Website</b>. Pengaturan permohonan, statistik, kontak WhatsApp, dan akun pengguna tetap khusus Admin.</p>
+      </div>
+
+      <!-- BERITA -->
+      <div class="panel" id="panel-berita">
+        <div class="toolbar">
+          <h3>Kelola Berita</h3>
+          <button class="btn sm" onclick="bukaFormBerita()">+ Tambah Berita</button>
+        </div>
+        <table>
+          <thead><tr><th>Judul</th><th>Tag</th><th>Tanggal</th><th>Utama</th><th style="width:120px">Aksi</th></tr></thead>
+          <tbody id="tabelBerita"></tbody>
+        </table>
+      </div>
+
+      <!-- PENGUMUMAN -->
+      <div class="panel" id="panel-pengumuman">
+        <div class="toolbar">
+          <h3>Kelola Pengumuman</h3>
+          <button class="btn sm" onclick="bukaFormPengumuman()">+ Tambah Pengumuman</button>
+        </div>
+        <table>
+          <thead><tr><th>Judul</th><th>Kategori</th><th>Tanggal</th><th style="width:120px">Aksi</th></tr></thead>
+          <tbody id="tabelPengumuman"></tbody>
+        </table>
+      </div>
+
+      <!-- UNDUHAN -->
+      <div class="panel" id="panel-unduhan">
+        <div class="toolbar">
+          <h3>Kelola Dokumen Unduhan</h3>
+          <button class="btn sm" onclick="bukaFormUnduhan()">+ Tambah Dokumen</button>
+        </div>
+        <table>
+          <thead><tr><th>Judul</th><th>Kategori</th><th>Tipe</th><th>Ukuran</th><th style="width:120px">Aksi</th></tr></thead>
+          <tbody id="tabelUnduhan"></tbody>
+        </table>
+      </div>
+
+      <!-- KONTEN WEBSITE -->
+      <div class="panel" id="panel-konten">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:15px;color:var(--navy);margin-bottom:4px">Editor Konten Website</h3>
+            <p class="hint">Admin dan Editor menggunakan sesi login yang sama. Di sini Anda dapat mengubah isi halaman Pengujian, Kegiatan, Peralatan, Laboratorium, Pelayanan, dan Tentang tanpa login ulang.</p>
+          </div>
+          <a class="btn ghost sm" href="admin-konten.html" target="_blank">Buka Editor di Tab Baru</a>
+        </div>
+        <iframe id="kontenEditorFrame" src="admin-konten.html" title="Editor Konten Website" style="width:100%;min-height:900px;border:1px solid var(--gray-200);border-radius:10px;background:white"></iframe>
+      </div>
+
+      <!-- PERMOHONAN -->
+      <div class="panel" id="panel-permohonan">
+        <div class="toolbar">
+          <h3>Permohonan Layanan Masuk</h3>
+          <select id="filterStatus" onchange="renderPermohonan()" style="padding:8px 10px;border:1.5px solid var(--gray-200);border-radius:6px;font-size:13px">
+            <option value="">Semua Status</option>
+            <option value="diajukan">Diajukan</option>
+            <option value="diproses">Diproses</option>
+            <option value="selesai">Selesai</option>
+            <option value="ditolak">Ditolak</option>
+          </select>
+        </div>
+        <table>
+          <thead><tr><th>Kode Tiket</th><th>Pemohon</th><th>Layanan</th><th>Tanggal</th><th>Status</th><th style="width:140px">Aksi</th></tr></thead>
+          <tbody id="tabelPermohonan"></tbody>
+        </table>
+      </div>
+
+      <!-- KONTAK WHATSAPP -->
+      <div class="panel" id="panel-kontak">
+        <div class="toolbar"><h3>Kontak WhatsApp Instansi</h3></div>
+        <p class="hint" style="margin-bottom:14px;max-width:520px">Bila diaktifkan, setelah pemohon mengirim formulir permohonan, website otomatis membuka chat WhatsApp ke nomor di bawah dengan pesan berisi kode tiket dan data permohonan.</p>
+        <div class="msg" id="kontakMsg"></div>
+        <form id="formKontak" onsubmit="return simpanKontak(event)" style="max-width:480px">
+          <div class="field"><label>Status Fitur</label>
+            <select name="wa_aktif"><option value="1">Aktif</option><option value="0">Nonaktif</option></select>
+          </div>
+          <div class="field"><label>Nomor WhatsApp Instansi</label><input type="text" name="wa_number" placeholder="Contoh: 081234567890"></div>
+          <div class="field"><label>Nama Kontak (tampil di panel)</label><input type="text" name="wa_nama" placeholder="Petugas Layanan Pengujian"></div>
+          <button class="btn" type="submit">Simpan Kontak</button>
+        </form>
+      </div>
+
+      <!-- STATISTIK -->
+      <div class="panel" id="panel-statistik">
+        <div class="toolbar"><h3>Statistik Beranda</h3></div>
+        <div class="msg" id="statsMsg"></div>
+        <form id="formStats" onsubmit="return simpanStats(event)" style="max-width:480px">
+          <div class="form-row">
+            <div class="field"><label>Tenaga Kerja Tersertifikasi</label><input type="number" name="tenaga" required></div>
+            <div class="field"><label>Sampel Diuji Tahun Ini</label><input type="number" name="uji" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Pelatihan Diselenggarakan</label><input type="number" name="pelatihan" required></div>
+            <div class="field"><label>Kabupaten/Kota Terlayani</label><input type="number" name="kabkota" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Laboratorium Terakreditasi</label><input type="number" name="lab" required></div>
+            <div class="field"><label>Hari Kerja (SLA Pengujian)</label><input type="number" name="sla" required></div>
+          </div>
+          <button class="btn" type="submit">Simpan Statistik</button>
+        </form>
+      </div>
+
+      <!-- KELOLA AKUN -->
+      <div class="panel" id="panel-users">
+        <div class="toolbar">
+          <h3>Kelola Akun Pengguna</h3>
+          <button class="btn sm" onclick="bukaFormUser()">+ Tambah Akun</button>
+        </div>
+        <p class="hint" style="margin-bottom:14px">Admin dapat membuat beberapa akun. Role <b>Editor</b> hanya dapat mengelola berita, pengumuman, dan dokumen unduhan.</p>
+        <table>
+          <thead><tr><th>Username</th><th>Nama</th><th>Role</th><th>Dibuat</th><th style="width:150px">Aksi</th></tr></thead>
+          <tbody id="tabelUsers"></tbody>
+        </table>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="panel" id="panel-password">
+        <div class="toolbar"><h3>Ganti Password Akun</h3></div>
+        <div class="msg" id="pwMsg"></div>
+        <form id="formPassword" onsubmit="return gantiPassword(event)" style="max-width:380px">
+          <div class="field"><label>Password Lama</label><input type="password" name="old_password" required></div>
+          <div class="field"><label>Password Baru (min. 8 karakter)</label><input type="password" name="new_password" required minlength="8"></div>
+          <button class="btn" type="submit">Simpan Password Baru</button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════ MODAL FORM BERITA ═══════════ -->
+<div class="modal-overlay" id="modalBerita">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="beritaModalTitle">Tambah Berita</h3><button class="modal-close" onclick="tutup('modalBerita')">✕</button></div>
+    <div class="modal-body">
+      <div class="msg" id="beritaMsg"></div>
+      <form id="formBerita" onsubmit="return simpanBerita(event)">
+        <input type="hidden" name="id">
+        <div class="field"><label>Judul</label><input type="text" name="title" required></div>
+        <div class="form-row">
+          <div class="field"><label>Tag</label><input type="text" name="tag" placeholder="Kegiatan / Prestasi / Layanan" required></div>
+          <div class="field"><label>Tanggal</label><input type="date" name="date" required></div>
+        </div>
+        <div class="field"><label>Ringkasan (excerpt)</label><textarea name="excerpt" rows="2" required></textarea></div>
+        <div class="field"><label>Isi Lengkap</label><textarea name="content" rows="4" required></textarea></div>
+        <div class="field"><label>Gambar Cover (opsional, JPG/PNG/WEBP)</label><input type="file" name="gambar" accept=".jpg,.jpeg,.png,.webp"></div>
+        <div class="checkbox-row"><input type="checkbox" name="featured" id="beritaFeatured"><label for="beritaFeatured" style="margin:0">Jadikan berita utama (featured)</label></div>
+        <button class="btn full" type="submit">Simpan Berita</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL FORM PENGUMUMAN ═══════════ -->
+<div class="modal-overlay" id="modalPengumuman">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="pengumumanModalTitle">Tambah Pengumuman</h3><button class="modal-close" onclick="tutup('modalPengumuman')">✕</button></div>
+    <div class="modal-body">
+      <div class="msg" id="pengumumanMsg"></div>
+      <form id="formPengumuman" onsubmit="return simpanPengumuman(event)">
+        <input type="hidden" name="id">
+        <div class="field"><label>Judul Pengumuman</label><textarea name="title" rows="2" required></textarea></div>
+        <div class="form-row">
+          <div class="field"><label>Kategori</label>
+            <select name="tag" required><option value="info">Info</option><option value="jadwal">Jadwal</option><option value="penting">Penting</option></select>
+          </div>
+          <div class="field"><label>Tanggal</label><input type="date" name="date" required></div>
+        </div>
+        <div class="field">
+          <label>Lampiran Pengumuman</label>
+          <input type="file" name="lampiran" id="pengumumanLampiranInput"
+                 accept=".pdf,.doc,.docx,.xls,.xlsx,.zip,.jpg,.jpeg,.png,.gif,.webp">
+          <p class="hint" id="pengumumanLampiranHint">PDF, Word, Excel, ZIP, JPG, PNG, GIF, atau WEBP. Maks. 8MB.</p>
+        </div>
+        <button class="btn full" type="submit">Simpan Pengumuman</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL FORM UNDUHAN ═══════════ -->
+<div class="modal-overlay" id="modalUnduhan">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="unduhanModalTitle">Tambah Dokumen</h3><button class="modal-close" onclick="tutup('modalUnduhan')">✕</button></div>
+    <div class="modal-body">
+      <div class="msg" id="unduhanMsg"></div>
+      <form id="formUnduhan" onsubmit="return simpanUnduhan(event)">
+        <input type="hidden" name="id">
+        <div class="field"><label>Judul Dokumen</label><input type="text" name="title" required></div>
+        <div class="field"><label>Kategori</label><input type="text" name="kategori" placeholder="Formulir / Panduan / SOP / Referensi" required></div>
+        <div class="field"><label>Berkas (PDF/DOC/DOCX/XLS/XLSX/ZIP, maks 8MB)</label><input type="file" name="berkas" id="unduhanFileInput" accept=".pdf,.doc,.docx,.xls,.xlsx,.zip"></div>
+        <p class="hint" id="unduhanFileHint"></p>
+        <button class="btn full" type="submit">Simpan Dokumen</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL AKUN ═══════════ -->
+<div class="modal-overlay" id="modalUser">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="userModalTitle">Tambah Akun</h3><button class="modal-close" onclick="tutup('modalUser')">✕</button></div>
+    <div class="modal-body">
+      <div class="msg" id="userMsg"></div>
+      <form id="formUser" onsubmit="return simpanUser(event)">
+        <input type="hidden" name="id">
+        <div class="field"><label>Username</label><input type="text" name="username" pattern="[A-Za-z0-9._-]{3,32}" required></div>
+        <div class="field"><label>Nama Pengguna</label><input type="text" name="name" required></div>
+        <div class="field"><label>Role</label><select name="role"><option value="editor">Editor</option><option value="admin">Admin</option></select></div>
+        <div class="field"><label>Password <span id="userPasswordHint">(minimal 8 karakter)</span></label><input type="password" name="password" id="userPassword" minlength="8"></div>
+        <button class="btn full" type="submit">Simpan Akun</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL DETAIL/UPDATE PERMOHONAN ═══════════ -->
+<div class="modal-overlay" id="modalPermohonan">
+  <div class="modal-box">
+    <div class="modal-head"><h3>Detail Permohonan</h3><button class="modal-close" onclick="tutup('modalPermohonan')">✕</button></div>
+    <div class="modal-body">
+      <div id="detailPermohonan" style="font-size:13.5px;line-height:1.8;margin-bottom:16px"></div>
+      <div class="msg" id="permohonanMsg"></div>
+      <form id="formPermohonan" onsubmit="return updateStatusPermohonan(event)">
+        <input type="hidden" name="id">
+        <div class="field">
+          <label>Status</label>
+          <select name="status" required>
+            <option value="diajukan">Diajukan</option>
+            <option value="diproses">Diproses</option>
+            <option value="selesai">Selesai</option>
+            <option value="ditolak">Ditolak</option>
+          </select>
+        </div>
+        <div class="field"><label>Catatan Petugas (akan dilihat pemohon)</label><textarea name="catatan_admin" rows="3"></textarea></div>
+        <button class="btn full" type="submit">Simpan Status</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  var API = 'api.php';
+  var DATA = { berita: [], pengumuman: [], unduhan: [], permohonan: [], users: [] }; var ME = null;
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function showMsg(id, text, ok){ var el=document.getElementById(id); el.className='msg show '+(ok?'ok':'err'); el.textContent=text; }
+  function hideMsg(id){ document.getElementById(id).className='msg'; }
+
+  /* ── Auth ── */
+  function doLogin(e){
+    e.preventDefault();
+    var btn=document.getElementById('btnLogin'); btn.disabled=true; btn.textContent='Memeriksa...';
+    var fd=new FormData(e.target); fd.append('action','login');
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      btn.disabled=false; btn.textContent='Masuk';
+      if(!res.ok){ showMsg('loginMsg', res.error||'Login gagal', false); return; }
+      masukApp(res.user);
+    }).catch(()=>{ btn.disabled=false; btn.textContent='Masuk'; showMsg('loginMsg','Tidak dapat terhubung ke server (api.php). Pastikan file diakses lewat server PHP, bukan dibuka langsung dari file.',false); });
+    return false;
+  }
+  function doLogout(){
+    fetch(API+'?action=logout',{method:'POST'}).finally(()=>{ location.reload(); });
+  }
+  function masukApp(user){
+    if(user) ME=user;
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('app').classList.add('open');
+    var frame=document.getElementById('kontenEditorFrame'); if(frame){ frame.src='admin-konten.html?t='+Date.now(); }
+    terapkanHakAkses();
+    muatSemua();
+  }
+  function terapkanHakAkses(){
+    var adminRole = ME && ME.role === 'admin';
+    document.getElementById('userRoleLabel').textContent = adminRole ? 'Panel Admin • Administrator' : 'Panel Admin • Editor';
+    document.getElementById('currentUserBox').textContent = ME ? (ME.name+' (@'+ME.username+')') : '';
+    document.querySelectorAll('[data-admin-only="1"]').forEach(function(el){ el.style.display=adminRole?'flex':'none'; });
+    ['permohonan','kontak','statistik'].forEach(function(n){
+      var el=document.querySelector('.side-link[data-panel="'+n+'"]'); if(el) el.style.display=adminRole?'flex':'none';
+    });
+    if(!adminRole){
+      document.getElementById('panel-permohonan').style.display='none';
+      document.getElementById('panel-kontak').style.display='none';
+      document.getElementById('panel-statistik').style.display='none';
+    }
+  }
+  fetch(API+'?action=session_check').then(r=>r.json()).then(res=>{
+    if(res.ok && res.loggedin) masukApp(res.user);
+  }).catch(()=>{});
+
+  /* ── Navigasi panel ── */
+  function gantiPanel(name){
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.side-link').forEach(l=>l.classList.remove('active'));
+    document.getElementById('panel-'+name).classList.add('active');
+    document.querySelector('.side-link[data-panel="'+name+'"]').classList.add('active');
+    var titles={dashboard:'Dashboard',berita:'Kelola Berita',pengumuman:'Kelola Pengumuman',unduhan:'Kelola Unduhan',konten:'Konten Website',permohonan:'Permohonan Masuk',kontak:'Kontak WhatsApp',statistik:'Statistik Beranda',users:'Kelola Akun',password:'Ganti Password'};
+    document.getElementById('pageTitle').textContent=titles[name]||name;
+    document.getElementById('sidebar').classList.remove('open');
+  }
+
+  function tutup(id){ document.getElementById(id).classList.remove('open'); }
+  function buka(id){ document.getElementById(id).classList.add('open'); }
+  document.querySelectorAll('.modal-overlay').forEach(function(ov){
+    ov.addEventListener('click', function(e){ if(e.target===ov) tutup(ov.id); });
+  });
+
+  /* ── Muat semua data ── */
+  function muatSemua(){
+    Promise.all([
+      fetch(API+'?action=list_berita').then(r=>r.json()),
+      fetch(API+'?action=list_pengumuman').then(r=>r.json()),
+      fetch(API+'?action=list_unduhan').then(r=>r.json()),
+      fetch(API+'?action=list_permohonan').then(r=>r.json()),
+      fetch(API+'?action=stats').then(r=>r.json()),
+      fetch(API+'?action=kontak_info').then(r=>r.json()),
+      (ME && ME.role==='admin' ? fetch(API+'?action=list_users').then(r=>r.json()) : Promise.resolve({data:[]}))
+    ]).then(function(res){
+      DATA.berita = res[0].data||[];
+      DATA.pengumuman = res[1].data||[];
+      DATA.unduhan = res[2].data||[];
+      DATA.permohonan = res[3].data||[];
+      DATA.users = res[6].data||[];
+      var s = res[4].data||{};
+      var f = document.getElementById('formStats');
+      ['tenaga','uji','pelatihan','kabkota','lab','sla'].forEach(function(k){ if(f[k]) f[k].value = s[k]!=null?s[k]:''; });
+      var k = res[5].data||{};
+      var fk = document.getElementById('formKontak');
+      fk.wa_aktif.value = k.wa_aktif ? '1' : '0';
+      fk.wa_number.value = k.wa_number || '';
+      fk.wa_nama.value = k.wa_nama || 'Petugas Layanan Pengujian';
+      renderDashboard(); renderBerita(); renderPengumuman(); renderUnduhan(); renderPermohonan(); renderUsers();
+    });
+  }
+
+  /* ── Dashboard ── */
+  function renderDashboard(){
+    var pending = DATA.permohonan.filter(p=>p.status==='diajukan').length;
+    var cards=[
+      {n:DATA.berita.length,l:'Total Berita'},
+      {n:DATA.pengumuman.length,l:'Total Pengumuman'},
+      {n:DATA.unduhan.length,l:'Total Dokumen Unduhan'},
+      {n:DATA.permohonan.length,l:'Total Permohonan Masuk'},
+      {n:pending,l:'Permohonan Menunggu Diproses'}
+    ];
+    document.getElementById('dashCards').innerHTML = cards.map(c=>'<div class="stat-box"><div class="num">'+c.n+'</div><div class="label">'+c.l+'</div></div>').join('');
+  }
+
+  /* ── BERITA ── */
+  function renderBerita(){
+    var tb=document.getElementById('tabelBerita');
+    if(!DATA.berita.length){ tb.innerHTML='<tr><td colspan="5" class="empty-row">Belum ada berita.</td></tr>'; return; }
+    tb.innerHTML = DATA.berita.slice().sort((a,b)=>new Date(b.date)-new Date(a.date)).map(b=>
+      '<tr><td>'+esc(b.title)+'</td><td>'+esc(b.tag)+'</td><td>'+esc(b.date)+'</td><td>'+(b.featured?'✅':'—')+'</td>' +
+      '<td class="actions"><button class="btn ghost sm" onclick="bukaFormBerita('+b.id+')">Edit</button>' +
+      '<button class="btn red sm" onclick="hapusBerita('+b.id+')">Hapus</button></td></tr>'
+    ).join('');
+  }
+  function bukaFormBerita(id){
+    var form=document.getElementById('formBerita'); form.reset(); hideMsg('beritaMsg');
+    document.getElementById('beritaModalTitle').textContent = id? 'Edit Berita':'Tambah Berita';
+    form.id.value = id||'';
+    if(id){
+      var b=DATA.berita.find(x=>x.id===id);
+      if(b){ form.title.value=b.title; form.tag.value=b.tag; form.date.value=b.date; form.excerpt.value=b.excerpt; form.content.value=b.content; form.featured.checked=!!b.featured; }
+    }
+    buka('modalBerita');
+  }
+  function simpanBerita(e){
+    e.preventDefault();
+    var fd=new FormData(e.target);
+    fd.set('featured', e.target.featured.checked?'1':'0');
+    fd.append('action', fd.get('id')? 'update_berita':'create_berita');
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      if(!res.ok){ showMsg('beritaMsg', res.error||'Gagal menyimpan', false); return; }
+      tutup('modalBerita'); muatSemua();
+    }).catch(()=>showMsg('beritaMsg','Tidak dapat terhubung ke server.',false));
+    return false;
+  }
+  function hapusBerita(id){
+    if(!confirm('Hapus berita ini?')) return;
+    var fd=new FormData(); fd.append('action','delete_berita'); fd.append('id',id);
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(()=>muatSemua());
+  }
+
+  /* ── PENGUMUMAN ── */
+  function renderPengumuman(){
+    var tb=document.getElementById('tabelPengumuman');
+    if(!DATA.pengumuman.length){ tb.innerHTML='<tr><td colspan="4" class="empty-row">Belum ada pengumuman.</td></tr>'; return; }
+    tb.innerHTML = DATA.pengumuman.slice().sort((a,b)=>new Date(b.date)-new Date(a.date)).map(p=>
+      '<tr><td>'+esc(p.title)+(p.lampiran?' <span class="pill info">📎 '+esc((p.lampiran.ext||'').toUpperCase())+'</span>':'')+'</td><td><span class="pill '+esc(p.tag)+'">'+esc(p.tag)+'</span></td><td>'+esc(p.date)+'</td>' +
+      '<td class="actions"><button class="btn ghost sm" onclick="bukaFormPengumuman('+p.id+')">Edit</button>' +
+      '<button class="btn red sm" onclick="hapusPengumuman('+p.id+')">Hapus</button></td></tr>'
+    ).join('');
+  }
+  function bukaFormPengumuman(id){
+    var form=document.getElementById('formPengumuman'); form.reset(); hideMsg('pengumumanMsg');
+    document.getElementById('pengumumanModalTitle').textContent = id? 'Edit Pengumuman':'Tambah Pengumuman';
+    document.getElementById('pengumumanLampiranInput').required = !id;
+    document.getElementById('pengumumanLampiranHint').textContent =
+      id ? 'Kosongkan jika tidak ingin mengganti lampiran. PDF/Word/Excel/ZIP/gambar, maks. 8MB.'
+         : 'PDF/Word/Excel/ZIP/gambar, maks. 8MB.';
+    form.id.value = id||'';
+    if(id){
+      var p=DATA.pengumuman.find(x=>x.id===id);
+      if(p){
+        form.title.value=p.title; form.tag.value=p.tag; form.date.value=p.date;
+        if(p.lampiran) document.getElementById('pengumumanLampiranHint').textContent =
+          'Lampiran saat ini: '+(p.lampiran.original_name||p.lampiran.filename)+'. Kosongkan untuk mempertahankan.';
+      }
+    }
+    buka('modalPengumuman');
+  }
+  function simpanPengumuman(e){
+    e.preventDefault();
+    var fd=new FormData(e.target);
+    fd.append('action', fd.get('id')? 'update_pengumuman':'create_pengumuman');
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      if(!res.ok){ showMsg('pengumumanMsg', res.error||'Gagal menyimpan', false); return; }
+      tutup('modalPengumuman'); muatSemua();
+    }).catch(()=>showMsg('pengumumanMsg','Tidak dapat terhubung ke server.',false));
+    return false;
+  }
+  function hapusPengumuman(id){
+    if(!confirm('Hapus pengumuman ini?')) return;
+    var fd=new FormData(); fd.append('action','delete_pengumuman'); fd.append('id',id);
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(()=>muatSemua());
+  }
+
+  /* ── UNDUHAN ── */
+  function renderUnduhan(){
+    var tb=document.getElementById('tabelUnduhan');
+    if(!DATA.unduhan.length){ tb.innerHTML='<tr><td colspan="5" class="empty-row">Belum ada dokumen.</td></tr>'; return; }
+    tb.innerHTML = DATA.unduhan.map(u=>
+      '<tr><td>'+esc(u.title)+'</td><td>'+esc(u.kategori)+'</td><td>'+esc((u.ext||'').toUpperCase())+'</td><td>'+esc(u.size)+'</td>' +
+      '<td class="actions"><button class="btn ghost sm" onclick="bukaFormUnduhan('+u.id+')">Edit</button>' +
+      '<button class="btn red sm" onclick="hapusUnduhan('+u.id+')">Hapus</button></td></tr>'
+    ).join('');
+  }
+  function bukaFormUnduhan(id){
+    var form=document.getElementById('formUnduhan'); form.reset(); hideMsg('unduhanMsg');
+    document.getElementById('unduhanModalTitle').textContent = id? 'Edit Dokumen':'Tambah Dokumen';
+    document.getElementById('unduhanFileInput').required = !id;
+    document.getElementById('unduhanFileHint').textContent = id? 'Kosongkan jika tidak ingin mengganti berkas.':'';
+    form.id.value = id||'';
+    if(id){ var u=DATA.unduhan.find(x=>x.id===id); if(u){ form.title.value=u.title; form.kategori.value=u.kategori; } }
+    buka('modalUnduhan');
+  }
+  function simpanUnduhan(e){
+    e.preventDefault();
+    var fd=new FormData(e.target);
+    fd.append('action', fd.get('id')? 'update_unduhan':'create_unduhan');
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      if(!res.ok){ showMsg('unduhanMsg', res.error||'Gagal menyimpan', false); return; }
+      tutup('modalUnduhan'); muatSemua();
+    }).catch(()=>showMsg('unduhanMsg','Tidak dapat terhubung ke server.',false));
+    return false;
+  }
+  function hapusUnduhan(id){
+    if(!confirm('Hapus dokumen ini?')) return;
+    var fd=new FormData(); fd.append('action','delete_unduhan'); fd.append('id',id);
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(()=>muatSemua());
+  }
+
+  /* ── PERMOHONAN ── */
+  function renderPermohonan(){
+    var tb=document.getElementById('tabelPermohonan');
+    var filter=document.getElementById('filterStatus').value;
+    var items=DATA.permohonan.slice().sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+    if(filter) items=items.filter(p=>p.status===filter);
+    if(!items.length){ tb.innerHTML='<tr><td colspan="6" class="empty-row">Tidak ada permohonan.</td></tr>'; return; }
+    tb.innerHTML = items.map(p=>
+      '<tr><td>'+esc(p.kode_tiket)+'</td><td>'+esc(p.nama)+'</td><td>'+esc(p.jenis_layanan)+'</td><td>'+esc(p.created_at)+'</td>' +
+      '<td><span class="pill '+esc(p.status)+'">'+esc(p.status)+'</span></td>' +
+      '<td class="actions"><button class="btn ghost sm" onclick="bukaDetailPermohonan('+p.id+')">Kelola</button></td></tr>'
+    ).join('');
+  }
+  function bukaDetailPermohonan(id){
+    var p=DATA.permohonan.find(x=>x.id===id); if(!p) return;
+    hideMsg('permohonanMsg');
+    var lampiranHtml = p.lampiran? '<div><b>Lampiran:</b> <a href="'+API+'?action=download&type=lampiran&id='+p.id+'" target="_blank">Unduh berkas</a></div>' : '<div><b>Lampiran:</b> Tidak ada</div>';
+    document.getElementById('detailPermohonan').innerHTML =
+      '<div><b>Kode Tiket:</b> '+esc(p.kode_tiket)+'</div>' +
+      '<div><b>Nama:</b> '+esc(p.nama)+'</div>' +
+      '<div><b>Instansi:</b> '+esc(p.instansi||'—')+'</div>' +
+      '<div><b>No. HP:</b> '+esc(p.no_hp)+'</div>' +
+      '<div><b>Email:</b> '+esc(p.email||'—')+'</div>' +
+      '<div><b>Layanan:</b> '+esc(p.jenis_layanan)+'</div>' +
+      '<div><b>Catatan Pemohon:</b> '+esc(p.catatan||'—')+'</div>' +
+      lampiranHtml +
+      '<div><b>Diajukan:</b> '+esc(p.created_at)+'</div>';
+    var form=document.getElementById('formPermohonan');
+    form.id.value=p.id; form.status.value=p.status; form.catatan_admin.value=p.catatan_admin||'';
+    buka('modalPermohonan');
+  }
+  function updateStatusPermohonan(e){
+    e.preventDefault();
+    var fd=new FormData(e.target); fd.append('action','update_permohonan_status');
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      if(!res.ok){ showMsg('permohonanMsg', res.error||'Gagal menyimpan', false); return; }
+      tutup('modalPermohonan'); muatSemua();
+    }).catch(()=>showMsg('permohonanMsg','Tidak dapat terhubung ke server.',false));
+    return false;
+  }
+
+  /* ── KONTAK WHATSAPP ── */
+  function simpanKontak(e){
+    e.preventDefault();
+    hideMsg('kontakMsg');
+    var fd=new FormData(e.target); fd.append('action','update_kontak');
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      if(!res.ok){ showMsg('kontakMsg', res.error||'Gagal menyimpan', false); return; }
+      showMsg('kontakMsg','Kontak WhatsApp berhasil disimpan.', true);
+    }).catch(()=>showMsg('kontakMsg','Tidak dapat terhubung ke server.',false));
+    return false;
+  }
+
+  /* ── STATISTIK ── */
+  function simpanStats(e){
+    e.preventDefault();
+    hideMsg('statsMsg');
+    var fd=new FormData(e.target); fd.append('action','update_stats');
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      if(!res.ok){ showMsg('statsMsg', res.error||'Gagal menyimpan', false); return; }
+      showMsg('statsMsg','Statistik berhasil disimpan.', true);
+    }).catch(()=>showMsg('statsMsg','Tidak dapat terhubung ke server.',false));
+    return false;
+  }
+
+  /* ── AKUN PENGGUNA ── */
+  function renderUsers(){
+    var tb=document.getElementById('tabelUsers'); if(!tb) return;
+    if(!DATA.users.length){ tb.innerHTML='<tr><td colspan="5" class="empty-row">Belum ada akun.</td></tr>'; return; }
+    tb.innerHTML=DATA.users.map(u=>
+      '<tr><td><b>'+esc(u.username)+'</b></td><td>'+esc(u.name)+'</td><td><span class="pill '+(u.role==='admin'?'penting':'info')+'">'+esc(u.role)+'</span></td><td>'+esc(u.created_at||'')+'</td>'+
+      '<td class="actions"><button class="btn ghost sm" onclick="bukaFormUser('+u.id+')">Edit</button>'+
+      (u.id !== (ME&&ME.id) ? '<button class="btn red sm" onclick="hapusUser('+u.id+')">Hapus</button>' : '')+'</td></tr>'
+    ).join('');
+  }
+  function bukaFormUser(id){
+    var form=document.getElementById('formUser'); form.reset(); hideMsg('userMsg');
+    document.getElementById('userModalTitle').textContent=id?'Edit Akun':'Tambah Akun';
+    document.getElementById('userPasswordHint').textContent=id?'(kosongkan jika tidak diganti)':'(minimal 8 karakter)';
+    form.id.value=id||'';
+    if(id){ var u=DATA.users.find(x=>x.id===id); if(u){ form.username.value=u.username; form.name.value=u.name; form.role.value=u.role; } }
+    document.getElementById('userPassword').required=!id;
+    buka('modalUser');
+  }
+  function simpanUser(e){
+    e.preventDefault();
+    var fd=new FormData(e.target);
+    fd.append('action', fd.get('id')?'update_user':'create_user');
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      if(!res.ok){ showMsg('userMsg',res.error||'Gagal menyimpan akun',false); return; }
+      tutup('modalUser'); muatSemua();
+    }).catch(()=>showMsg('userMsg','Tidak dapat terhubung ke server.',false));
+    return false;
+  }
+  function hapusUser(id){
+    var u=DATA.users.find(x=>x.id===id); if(!u) return;
+    if(!confirm('Hapus akun @'+u.username+'?')) return;
+    var fd=new FormData(); fd.append('action','delete_user'); fd.append('id',id);
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      if(!res.ok) alert(res.error||'Gagal menghapus akun'); else muatSemua();
+    });
+  }
+
+  /* ── PASSWORD ── */
+  function gantiPassword(e){
+    e.preventDefault();
+    hideMsg('pwMsg');
+    var fd=new FormData(e.target); fd.append('action','change_password');
+    fetch(API,{method:'POST',body:fd}).then(r=>r.json()).then(res=>{
+      if(!res.ok){ showMsg('pwMsg', res.error||'Gagal mengganti password', false); return; }
+      showMsg('pwMsg','Password berhasil diganti.', true);
+      e.target.reset();
+    }).catch(()=>showMsg('pwMsg','Tidak dapat terhubung ke server.',false));
+    return false;
+  }
+</script>
+</body>
+</html>

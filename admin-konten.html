@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelola Konten Kartu — UPTD Bina Jasa Konstruksi NTB</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body{background:var(--gray-50);font-family:var(--font-body);color:var(--text-main)}
+  .adm-wrap{max-width:1100px;margin:0 auto;padding:30px 20px 80px}
+  .adm-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+  .adm-title{font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--navy)}
+  .adm-sub{font-size:13px;color:var(--text-sub)}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;border:none;font-size:13.5px;font-weight:700;cursor:pointer;text-decoration:none}
+  .btn-primary{background:var(--red-gov);color:#fff}
+  .btn-primary:hover{background:#a01f24}
+  .btn-secondary{background:#fff;color:var(--navy);border:1px solid var(--gray-200)}
+  .btn-secondary:hover{background:var(--gray-100)}
+  .btn-danger{background:#fff;color:var(--red-gov);border:1px solid #f3caca}
+  .btn-small{padding:6px 12px;font-size:12px}
+  /* login */
+  .login-box{max-width:380px;margin:80px auto;background:#fff;border-radius:16px;box-shadow:var(--shadow-card);padding:32px}
+  .login-box h2{font-family:var(--font-display);color:var(--navy);margin-bottom:6px}
+  .login-box p{font-size:13px;color:var(--text-sub);margin-bottom:22px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:12.5px;font-weight:700;color:var(--text-sub);margin-bottom:5px}
+  .field input,.field textarea,.field select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--gray-200);font-size:13.5px;font-family:inherit;background:#fff}
+  .field textarea{min-height:70px;resize:vertical}
+  .err-msg{background:#fce8e8;color:var(--red-gov);padding:10px 12px;border-radius:8px;font-size:12.5px;margin-bottom:14px;display:none}
+  .ok-msg{background:#e0f4ef;color:#0f5c4b;padding:10px 12px;border-radius:8px;font-size:12.5px;margin-bottom:14px;display:none}
+  /* tabs */
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;border-bottom:2px solid var(--gray-200);padding-bottom:0}
+  .tab-btn{padding:10px 16px;border-radius:8px 8px 0 0;border:none;background:transparent;font-size:13px;font-weight:700;color:var(--text-sub);cursor:pointer;border-bottom:3px solid transparent}
+  .tab-btn.active{color:var(--navy);border-bottom:3px solid var(--red-gov)}
+  .panel{display:none;background:#fff;border-radius:14px;box-shadow:var(--shadow-card);padding:24px}
+  .panel.active{display:block}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+  .panel-head h3{font-family:var(--font-display);font-size:17px;color:var(--navy)}
+  /* item cards */
+  .item-card{border:1px solid var(--gray-200);border-radius:10px;margin-bottom:12px;overflow:hidden}
+  .item-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--gray-50);cursor:pointer}
+  .item-head strong{font-size:13.5px;color:var(--navy)}
+  .item-actions{display:flex;gap:6px}
+  .item-actions button{background:none;border:none;cursor:pointer;color:var(--text-sub);font-size:14px;padding:2px 6px}
+  .item-actions button:hover{color:var(--red-gov)}
+  .item-body{padding:16px;display:none}
+  .item-body.open{display:block}
+  .sub-list-row{display:flex;gap:8px;margin-bottom:8px;align-items:center}
+  .sub-list-row input{flex:1}
+  .sub-empty{font-size:12.5px;color:var(--text-muted);padding:10px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .icon-preview{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;margin-right:6px;vertical-align:middle}
+  .loading{padding:40px;text-align:center;color:var(--text-sub);font-size:13.5px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="adm-wrap" id="app">
+  <div class="loading">Memuat…</div>
+</div>
+
+<script src="js/konten-shared.js"></script>
+<script>
+(function () {
+  var K = window.KontenShared;
+  var API = 'konten-api.php';
+  var app = document.getElementById('app');
+
+  var THEME_OPTIONS = [['navy','Navy (Biru Tua)'],['gold','Emas'],['teal','Teal'],['red','Merah'],['gray','Abu-abu']];
+  var ICON_OPTIONS = Object.keys(K.IKON_LABEL).map(function (k) { return [k, K.IKON_LABEL[k]]; });
+  var TINGKAT_OPTIONS = [['pimpinan','Pimpinan (Kepala UPTD)'],['kabid','Kepala Bidang / Subbagian'],['kasi','Kepala Seksi'],['koordinator','Koordinator Laboratorium'],['personel','Personel Laboratorium']];
+  var STATUS_OPTIONS = ['Baik', 'Kalibrasi', 'Rusak/Perbaikan'];
+
+  // ===================== SKEMA HALAMAN =====================
+  var PAGES = {
+    beranda: {
+      label: 'Beranda (Jenis Layanan)',
+      hint: 'Ditampilkan di bagian "Jenis Layanan" pada halaman Beranda (index.html). Judul layanan juga menjadi pilihan di formulir Ajukan Layanan.',
+      customKeys: [
+        { key: 'header', title: 'Judul Bagian', single: true,
+          fields: [ { key: 'eyebrow', label: 'Teks Kecil di Atas Judul', type: 'text' }, { key: 'judul', label: 'Judul Bagian', type: 'text' }, { key: 'sub', label: 'Deskripsi Bagian', type: 'textarea' } ] },
+        { key: 'layanan', title: 'Kartu Jenis Layanan', root: true,
+          itemTitle: function (it) { return it.judul || '(tanpa judul)'; },
+          newItem: function () { return { judul: 'Layanan Baru', desc: '', tema: 'navy', ikon: 'dokumen', tombol: 'Ajukan sekarang' }; },
+          fields: [ { key: 'judul', label: 'Nama Layanan (juga menjadi pilihan di formulir permohonan)', type: 'text' }, { key: 'desc', label: 'Deskripsi', type: 'textarea' }, { key: 'tema', label: 'Warna Tema', type: 'tema' }, { key: 'ikon', label: 'Ikon', type: 'ikon' }, { key: 'tombol', label: 'Teks Tombol (mis. Ajukan sekarang / Daftar sekarang / Konsultasi)', type: 'text' } ] }
+      ]
+    },
+    pengujian: {
+      label: 'Parameter Pengujian',
+      hint: 'Ditampilkan di halaman "Pengujian Material Konstruksi".',
+      root: 'kategori',
+      itemTitle: function (it) { return it.judul || '(tanpa judul)'; },
+      newItem: function () { return { judul: 'Kategori Baru', subjudul: '', tema: 'navy', ikon: 'dokumen', param: [], waktu: [] }; },
+      fields: [
+        { key: 'judul', label: 'Judul Kategori', type: 'text' },
+        { key: 'subjudul', label: 'Sub Judul', type: 'text' },
+        { key: 'tema', label: 'Warna Tema', type: 'tema' },
+        { key: 'ikon', label: 'Ikon', type: 'ikon' },
+        { key: 'param', label: 'Daftar Parameter Uji', type: 'objList',
+          itemTitle: function (p) { return p.teks || '(parameter baru)'; },
+          newItem: function () { return { teks: '', standar: '' }; },
+          fields: [ { key: 'teks', label: 'Nama Parameter', type: 'text' }, { key: 'standar', label: 'Standar / Kode SNI', type: 'text' } ] },
+        { key: 'waktu', label: 'Info Waktu / Hasil (satu baris = satu info)', type: 'strList' }
+      ]
+    },
+    kegiatan: {
+      label: 'Kegiatan',
+      hint: 'Ditampilkan di halaman "Kegiatan Pengujian dan Sertifikasi".',
+      customKeys: [
+        { key: 'statistik', title: 'Kartu Statistik', root: true,
+          itemTitle: function (it) { return it.judul || '(tanpa judul)'; },
+          newItem: function () { return { angka: '0', judul: 'Judul Baru', desc: '' }; },
+          fields: [ { key: 'angka', label: 'Angka', type: 'text' }, { key: 'judul', label: 'Judul', type: 'text' }, { key: 'desc', label: 'Deskripsi', type: 'textarea' } ] },
+        { key: 'timeline', title: 'Kronologi Kegiatan', root: true,
+          itemTitle: function (it) { return it.judul || '(tanpa judul)'; },
+          newItem: function () { return { tanggal: '', judul: 'Kegiatan Baru', desc: '', tags: [] }; },
+          fields: [ { key: 'tanggal', label: 'Tanggal', type: 'text' }, { key: 'judul', label: 'Judul Kegiatan', type: 'text' }, { key: 'desc', label: 'Deskripsi', type: 'textarea' }, { key: 'tags', label: 'Label / Tag (satu baris = satu tag)', type: 'strList' } ] }
+      ]
+    },
+    peralatan: {
+      label: 'Peralatan',
+      hint: 'Ditampilkan di halaman "Peralatan Laboratorium".',
+      root: 'kategori',
+      itemTitle: function (it) { return it.judul || '(tanpa judul)'; },
+      newItem: function () { return { judul: 'Kategori Baru', tema: 'navy', ikon: 'alat', alat: [] }; },
+      fields: [
+        { key: 'judul', label: 'Judul Kategori', type: 'text' },
+        { key: 'tema', label: 'Warna Tema', type: 'tema' },
+        { key: 'ikon', label: 'Ikon', type: 'ikon' },
+        { key: 'alat', label: 'Daftar Alat', type: 'objList',
+          itemTitle: function (a) { return a.nama || '(alat baru)'; },
+          newItem: function () { return { nama: '', merk: '', jumlah: '', kapasitas: '', status: 'Baik' }; },
+          fields: [ { key: 'nama', label: 'Nama Alat', type: 'text' }, { key: 'merk', label: 'Merk / Model', type: 'text' }, { key: 'jumlah', label: 'Jumlah', type: 'text' }, { key: 'kapasitas', label: 'Kapasitas', type: 'text' }, { key: 'status', label: 'Status', type: 'statusSelect' } ] }
+      ]
+    },
+    laboratorium: {
+      label: 'Laboratorium',
+      hint: 'Ditampilkan di halaman "Laboratorium Pengujian Material Konstruksi".',
+      customKeys: [
+        { key: 'stats', title: 'Statistik Ringkas', root: true,
+          itemTitle: function (it) { return it.label || '(tanpa label)'; },
+          newItem: function () { return { angka: '0', label: 'Label Baru' }; },
+          fields: [ { key: 'angka', label: 'Angka', type: 'text' }, { key: 'label', label: 'Label', type: 'text' } ] },
+        { key: 'unit', title: 'Unit Laboratorium', root: true,
+          itemTitle: function (it) { return it.judul || '(tanpa judul)'; },
+          newItem: function () { return { judul: 'Unit Baru', tema: 'navy', ikon: 'lab', desc: '', items: [] }; },
+          fields: [ { key: 'judul', label: 'Judul Unit', type: 'text' }, { key: 'tema', label: 'Warna Tema', type: 'tema' }, { key: 'ikon', label: 'Ikon', type: 'ikon' }, { key: 'desc', label: 'Deskripsi Singkat', type: 'textarea' }, { key: 'items', label: 'Daftar Layanan Uji (satu baris = satu item)', type: 'strList' } ] },
+        { key: 'akreditasi', title: 'Kotak Akreditasi', single: true,
+          fields: [ { key: 'judul', label: 'Judul', type: 'text' }, { key: 'desc', label: 'Deskripsi', type: 'textarea' } ] }
+      ]
+    },
+    pelayanan: {
+      label: 'Pelayanan',
+      hint: 'Ditampilkan di halaman "Pelayanan Laboratorium".',
+      customKeys: [
+        { key: 'alur', title: 'Alur / Prosedur Layanan', root: true,
+          itemTitle: function (it) { return it.judul || '(tanpa judul)'; },
+          newItem: function () { return { judul: 'Langkah Baru', desc: '' }; },
+          fields: [ { key: 'judul', label: 'Judul Langkah', type: 'text' }, { key: 'desc', label: 'Deskripsi', type: 'textarea' } ] },
+        { key: 'layanan', title: 'Kartu Jenis Layanan', root: true,
+          itemTitle: function (it) { return it.judul || '(tanpa judul)'; },
+          newItem: function () { return { judul: 'Layanan Baru', desc: '', tema: 'navy', ikon: 'dokumen', tautan: 'Ajukan' }; },
+          fields: [ { key: 'judul', label: 'Judul Layanan', type: 'text' }, { key: 'desc', label: 'Deskripsi', type: 'textarea' }, { key: 'tema', label: 'Warna Tema', type: 'tema' }, { key: 'ikon', label: 'Ikon', type: 'ikon' }, { key: 'tautan', label: 'Teks Tombol (mis. Ajukan / Daftar)', type: 'text' } ] },
+        { key: 'jam', title: 'Info Jam / Kontak Operasional', root: true,
+          itemTitle: function (it) { return it.judul || '(tanpa judul)'; },
+          newItem: function () { return { judul: 'Info Baru', nilai: '', catatan: '' }; },
+          fields: [ { key: 'judul', label: 'Judul', type: 'text' }, { key: 'nilai', label: 'Nilai Utama', type: 'text' }, { key: 'catatan', label: 'Catatan Kecil', type: 'text' } ] }
+      ]
+    },
+    tentang: {
+      label: 'Tentang UPTD',
+      hint: 'Ditampilkan di halaman "Tentang UPTD".',
+      customKeys: [
+        { key: 'profil', title: 'Paragraf Profil Lembaga', strListRoot: true },
+        { key: 'identitas', title: 'Tabel Identitas Lembaga', root: true,
+          itemTitle: function (it) { return it.label || '(tanpa label)'; },
+          newItem: function () { return { label: 'Label Baru', nilai: '' }; },
+          fields: [ { key: 'label', label: 'Label', type: 'text' }, { key: 'nilai', label: 'Nilai', type: 'text' } ] },
+        { key: 'visi', title: 'Visi', textRoot: true },
+        { key: 'misi', title: 'Misi (satu baris = satu poin)', strListRoot: true },
+        { key: 'struktur', title: 'Struktur Organisasi (kartu personel + foto)', root: true,
+          itemTitle: function (it) { return (it.nama || '(tanpa jabatan)') + (it.orang ? ' — ' + it.orang : ''); },
+          newItem: function () { return { tingkat: 'personel', unit: '', nama: 'Jabatan Baru', orang: '', posisi: '', foto: '', kode: '' }; },
+          fields: [
+            { key: 'tingkat', label: 'Tingkat / Baris di Bagan', type: 'select', options: TINGKAT_OPTIONS },
+            { key: 'nama', label: 'Jabatan (mis. Koordinator Lab Air)', type: 'text' },
+            { key: 'orang', label: 'Nama Personel (beserta gelar)', type: 'text' },
+            { key: 'foto', label: 'Foto Profil (disimpan di assets/personel/)', type: 'foto' },
+            { key: 'unit', label: 'Unit Lab (khusus tingkat Personel, agar dikelompokkan: Material / Air / Beton)', type: 'combo', options: ['Material', 'Air', 'Beton'] },
+            { key: 'posisi', label: 'Deskripsi Tugas (opsional)', type: 'text' },
+            { key: 'kode', label: 'Kode Singkat (tampil bila belum ada foto; kosongkan = inisial nama)', type: 'text' }
+          ] },
+        { key: 'dasarHukum', title: 'Dasar Hukum (satu baris = satu item)', strListRoot: true }
+      ]
+    }
+  };
+
+  var PAGE_ORDER = ['beranda', 'pengujian', 'kegiatan', 'peralatan', 'laboratorium', 'pelayanan', 'tentang'];
+  var state = { loggedIn: false, activePage: PAGE_ORDER[0], data: {}, loaded: {} };
+
+  function el(html) { var d = document.createElement('div'); d.innerHTML = html; return d.firstElementChild; }
+  function post(action, page, body) {
+    var url = API + '?action=' + action + (page ? '&page=' + page : '');
+    return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : '{}', credentials: 'same-origin' }).then(function (r) { return r.json(); });
+  }
+  function get(action, page) {
+    var url = API + '?action=' + action + (page ? '&page=' + page : '');
+    return fetch(url, { credentials: 'same-origin' }).then(function (r) { return r.json(); });
+  }
+
+  // ===================== SESI TERPADU =====================
+  function renderAccessDenied(message) {
+    app.innerHTML = '<div class="login-box" style="margin-top:80px">' +
+      '<h2>Akses Editor Konten</h2>' +
+      '<p>' + K.esc(message || 'Silakan login melalui admin.html terlebih dahulu.') + '</p>' +
+      '<a class="btn btn-primary" href="admin.html">Kembali ke Panel Admin</a>' +
+      '</div>';
+  }
+
+  // ===================== APP SHELL =====================
+  function renderApp() {
+    app.innerHTML = '';
+    var head = el(
+      '<div class="adm-header">' +
+      '<div><div class="adm-title">Editor Konten Website</div><div class="adm-sub">Login terintegrasi dengan admin.html • Admin dan Editor dapat mengubah konten halaman publik.</div></div>' +
+      '<div style="display:flex;gap:8px"><a class="btn btn-secondary" href="index.html" target="_blank">Lihat Situs</a><a class="btn btn-secondary" href="admin.html">Panel Utama</a></div>' +
+      '</div>'
+    );
+    app.appendChild(head);
+
+    var tabs = el('<div class="tabs"></div>');
+    PAGE_ORDER.forEach(function (pk) {
+      var b = el('<button class="tab-btn' + (pk === state.activePage ? ' active' : '') + '">' + PAGES[pk].label + '</button>');
+      b.onclick = function () { state.activePage = pk; renderApp(); };
+      tabs.appendChild(b);
+    });
+    app.appendChild(tabs);
+
+    var panelHolder = el('<div></div>');
+    app.appendChild(panelHolder);
+    panelHolder.innerHTML = '<div class="loading">Memuat data…</div>';
+
+    var pk = state.activePage;
+    if (state.data[pk]) { renderPanel(panelHolder, pk); return; }
+    get('get', pk).then(function (res) {
+      if (!res || !res.ok) {
+        panelHolder.innerHTML = '<div class="err-msg" style="display:block">' + K.esc((res && res.error) || 'Gagal memuat data.') + '</div>';
+        return;
+      }
+      state.data[pk] = res.data || {};
+      renderPanel(panelHolder, pk);
+    }).catch(function () {
+      panelHolder.innerHTML = '<div class="err-msg" style="display:block">Gagal memuat data dari server.</div>';
+    });
+  }
+
+  // ===================== FIELD RENDERERS =====================
+  function renderField(container, obj, field, onChange) {
+    var wrap = el('<div class="field"></div>');
+    var val = obj[field.key];
+    if (field.type === 'text') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var inp = el('<input type="text" value="' + K.esc(val || '') + '">');
+      inp.oninput = function () { obj[field.key] = inp.value; onChange && onChange(); };
+      wrap.appendChild(inp);
+    } else if (field.type === 'textarea') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var ta = el('<textarea></textarea>');
+      ta.value = val || '';
+      ta.oninput = function () { obj[field.key] = ta.value; onChange && onChange(); };
+      wrap.appendChild(ta);
+    } else if (field.type === 'tema') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var sel = el('<select></select>');
+      THEME_OPTIONS.forEach(function (o) { sel.appendChild(el('<option value="' + o[0] + '"' + (val === o[0] ? ' selected' : '') + '>' + o[1] + '</option>')); });
+      sel.onchange = function () { obj[field.key] = sel.value; onChange && onChange(); };
+      wrap.appendChild(sel);
+    } else if (field.type === 'ikon') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var isel = el('<select></select>');
+      ICON_OPTIONS.forEach(function (o) { isel.appendChild(el('<option value="' + o[0] + '"' + (val === o[0] ? ' selected' : '') + '>' + o[1] + '</option>')); });
+      isel.onchange = function () { obj[field.key] = isel.value; onChange && onChange(); };
+      wrap.appendChild(isel);
+    } else if (field.type === 'statusSelect') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var ssel = el('<select></select>');
+      STATUS_OPTIONS.forEach(function (o) { ssel.appendChild(el('<option value="' + o + '"' + (val === o ? ' selected' : '') + '>' + o + '</option>')); });
+      ssel.onchange = function () { obj[field.key] = ssel.value; onChange && onChange(); };
+      wrap.appendChild(ssel);
+    } else if (field.type === 'select') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var gsel = el('<select></select>');
+      field.options.forEach(function (o) { gsel.appendChild(el('<option value="' + K.esc(o[0]) + '"' + ((val || field.options[2][0]) === o[0] ? ' selected' : '') + '>' + K.esc(o[1]) + '</option>')); });
+      if (!val) obj[field.key] = gsel.value;
+      gsel.onchange = function () { obj[field.key] = gsel.value; onChange && onChange(); };
+      wrap.appendChild(gsel);
+    } else if (field.type === 'combo') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var lid = 'dl_' + Math.random().toString(36).slice(2, 8);
+      var cinp = el('<input type="text" list="' + lid + '" value="' + K.esc(val || '') + '">');
+      var dl = el('<datalist id="' + lid + '"></datalist>');
+      field.options.forEach(function (o) { dl.appendChild(el('<option value="' + K.esc(o) + '"></option>')); });
+      cinp.oninput = function () { obj[field.key] = cinp.value; onChange && onChange(); };
+      wrap.appendChild(cinp); wrap.appendChild(dl);
+    } else if (field.type === 'foto') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var box = el('<div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap"></div>');
+      var prev = el('<div style="width:84px;height:84px;border-radius:50%;background:var(--gray-100);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-muted);text-align:center;flex:none">Belum ada foto</div>');
+      var ctrl = el('<div style="flex:1;min-width:200px"></div>');
+      var file = el('<input type="file" accept="image/jpeg,image/png,image/webp" style="padding:8px">');
+      var pick = el('<select style="margin-top:8px"></select>');
+      var msg = el('<div style="font-size:12px;margin-top:6px;color:var(--text-muted)">JPG/PNG/WEBP, maks 8 MB. Foto persegi (wajah di tengah) hasilnya paling rapi.</div>');
+      var clr = el('<button class="btn btn-danger btn-small" type="button" style="margin-top:8px">Hapus foto dari kartu</button>');
+      function showPrev() {
+        if (obj[field.key]) { prev.innerHTML = '<img style="width:100%;height:100%;object-fit:cover" alt="">'; prev.firstChild.src = 'assets/personel/' + encodeURIComponent(obj[field.key]); prev.firstChild.onerror = function () { prev.textContent = 'File tidak ditemukan'; }; }
+        else prev.textContent = 'Belum ada foto';
+      }
+      function fillPick(files) {
+        pick.innerHTML = '<option value="">— atau pilih dari foto yang sudah ada di assets/personel —</option>';
+        (files || []).forEach(function (f) { pick.appendChild(el('<option value="' + K.esc(f) + '"' + (obj[field.key] === f ? ' selected' : '') + '>' + K.esc(f) + '</option>')); });
+      }
+      function loadList(cb) { get('list_foto').then(function (r) { fillPick(r && r.ok ? r.files : []); cb && cb(); }).catch(function () { fillPick([]); }); }
+      file.onchange = function () {
+        if (!file.files[0]) return;
+        var fd = new FormData(); fd.append('foto', file.files[0]);
+        msg.style.color = 'var(--text-muted)'; msg.textContent = 'Mengunggah…';
+        fetch(API + '?action=upload_foto', { method: 'POST', body: fd, credentials: 'same-origin' })
+          .then(function (r) { return r.json(); })
+          .then(function (r) {
+            if (r && r.ok) { obj[field.key] = r.filename; msg.style.color = '#14826E'; msg.textContent = 'Foto terunggah. Klik "Simpan Perubahan" di bawah agar tampil di situs.'; showPrev(); loadList(); }
+            else { msg.style.color = '#C0272D'; msg.textContent = (r && r.error) || 'Gagal mengunggah.'; }
+            file.value = '';
+          }).catch(function () { msg.style.color = '#C0272D'; msg.textContent = 'Tidak bisa terhubung ke server.'; });
+      };
+      pick.onchange = function () { obj[field.key] = pick.value; showPrev(); onChange && onChange(); };
+      clr.onclick = function () { obj[field.key] = ''; pick.value = ''; showPrev(); };
+      ctrl.appendChild(file); ctrl.appendChild(pick); ctrl.appendChild(clr); ctrl.appendChild(msg);
+      box.appendChild(prev); box.appendChild(ctrl); wrap.appendChild(box);
+      showPrev(); fillPick(obj[field.key] ? [obj[field.key]] : []); loadList();
+    } else if (field.type === 'strList') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var listWrap = el('<div></div>');
+      var arr = obj[field.key] = obj[field.key] || [];
+      function drawList() {
+        listWrap.innerHTML = '';
+        if (!arr.length) listWrap.appendChild(el('<div class="sub-empty">Belum ada item.</div>'));
+        arr.forEach(function (v, i) {
+          var row = el('<div class="sub-list-row"></div>');
+          var inp = el('<input type="text" value="' + K.esc(v) + '">');
+          inp.oninput = function () { arr[i] = inp.value; };
+          var del = el('<button class="btn btn-danger btn-small" type="button">Hapus</button>');
+          del.onclick = function () { arr.splice(i, 1); drawList(); };
+          row.appendChild(inp); row.appendChild(del);
+          listWrap.appendChild(row);
+        });
+      }
+      drawList();
+      wrap.appendChild(listWrap);
+      var addBtn = el('<button class="btn btn-secondary btn-small" type="button" style="margin-top:4px">+ Tambah Baris</button>');
+      addBtn.onclick = function () { arr.push(''); drawList(); };
+      wrap.appendChild(addBtn);
+    } else if (field.type === 'objList') {
+      wrap.innerHTML = '<label>' + field.label + '</label>';
+      var oList = el('<div></div>');
+      var oarr = obj[field.key] = obj[field.key] || [];
+      function drawObjList() {
+        oList.innerHTML = '';
+        if (!oarr.length) oList.appendChild(el('<div class="sub-empty">Belum ada item.</div>'));
+        oarr.forEach(function (item, i) {
+          var card = el('<div class="item-card" style="margin-bottom:8px"></div>');
+          var head = el('<div class="item-head"><strong></strong><div class="item-actions"></div></div>');
+          head.querySelector('strong').textContent = field.itemTitle(item);
+          var actions = head.querySelector('.item-actions');
+          var upBtn = el('<button type="button" title="Naik">&uarr;</button>');
+          upBtn.onclick = function (ev) { ev.stopPropagation(); if (i > 0) { oarr.splice(i, 1, oarr.splice(i - 1, 1, oarr[i])[0]); drawObjList(); } };
+          var downBtn = el('<button type="button" title="Turun">&darr;</button>');
+          downBtn.onclick = function (ev) { ev.stopPropagation(); if (i < oarr.length - 1) { oarr.splice(i, 1, oarr.splice(i + 1, 1, oarr[i])[0]); drawObjList(); } };
+          var delBtn = el('<button type="button" title="Hapus">&#10005;</button>');
+          delBtn.onclick = function (ev) { ev.stopPropagation(); if (confirm('Hapus item ini?')) { oarr.splice(i, 1); drawObjList(); } };
+          actions.appendChild(upBtn); actions.appendChild(downBtn); actions.appendChild(delBtn);
+          var body = el('<div class="item-body"></div>');
+          field.fields.forEach(function (sf) { renderField(body, item, sf, function () { head.querySelector('strong').textContent = field.itemTitle(item); }); });
+          head.onclick = function () { body.classList.toggle('open'); };
+          card.appendChild(head); card.appendChild(body);
+          oList.appendChild(card);
+        });
+      }
+      drawObjList();
+      wrap.appendChild(oList);
+      var oAddBtn = el('<button class="btn btn-secondary btn-small" type="button" style="margin-top:4px">+ Tambah Item</button>');
+      oAddBtn.onclick = function () { oarr.push(field.newItem()); drawObjList(); };
+      wrap.appendChild(oAddBtn);
+    }
+    container.appendChild(wrap);
+  }
+
+  // ===================== PANEL: root-array style (pengujian, peralatan) =====================
+  function renderRootArrayPanel(holder, pageKey, cfg, dataRoot, keyName, saveFn) {
+    holder.innerHTML = '';
+    var head = el('<div class="panel-head"><h3></h3><button class="btn btn-primary btn-small">+ Tambah</button></div>');
+    head.querySelector('h3').textContent = cfg.title || cfg.label;
+    holder.appendChild(head);
+    var arr = dataRoot[keyName] = dataRoot[keyName] || [];
+    var listWrap = el('<div></div>');
+    holder.appendChild(listWrap);
+
+    function draw() {
+      listWrap.innerHTML = '';
+      if (!arr.length) listWrap.appendChild(el('<div class="sub-empty">Belum ada data.</div>'));
+      arr.forEach(function (item, i) {
+        var card = el('<div class="item-card"></div>');
+        var headRow = el('<div class="item-head"><strong></strong><div class="item-actions"></div></div>');
+        headRow.querySelector('strong').textContent = cfg.itemTitle(item);
+        var actions = headRow.querySelector('.item-actions');
+        var upBtn = el('<button type="button" title="Naik">&uarr;</button>');
+        upBtn.onclick = function (ev) { ev.stopPropagation(); if (i > 0) { arr.splice(i, 1, arr.splice(i - 1, 1, arr[i])[0]); draw(); } };
+        var downBtn = el('<button type="button" title="Turun">&darr;</button>');
+        downBtn.onclick = function (ev) { ev.stopPropagation(); if (i < arr.length - 1) { arr.splice(i, 1, arr.splice(i + 1, 1, arr[i])[0]); draw(); } };
+        var delBtn = el('<button type="button" title="Hapus">&#10005;</button>');
+        delBtn.onclick = function (ev) { ev.stopPropagation(); if (confirm('Hapus "' + cfg.itemTitle(item) + '"?')) { arr.splice(i, 1); draw(); } };
+        actions.appendChild(upBtn); actions.appendChild(downBtn); actions.appendChild(delBtn);
+        var body = el('<div class="item-body"></div>');
+        cfg.fields.forEach(function (f) { renderField(body, item, f, function () { headRow.querySelector('strong').textContent = cfg.itemTitle(item); }); });
+        headRow.onclick = function () { body.classList.toggle('open'); };
+        card.appendChild(headRow); card.appendChild(body);
+        listWrap.appendChild(card);
+      });
+    }
+    draw();
+    head.querySelector('button').onclick = function () { arr.push(cfg.newItem()); draw(); body_open_last(); };
+    function body_open_last() { var bodies = listWrap.querySelectorAll('.item-body'); if (bodies.length) bodies[bodies.length - 1].classList.add('open'); }
+
+    appendSaveBar(holder, saveFn);
+  }
+
+  function appendSaveBar(holder, saveFn) {
+    var bar = el('<div style="margin-top:18px;display:flex;align-items:center;gap:10px">' +
+      '<button class="btn btn-primary">Simpan Perubahan</button><span class="ok-msg" style="margin:0"></span><span class="err-msg" style="margin:0"></span></div>');
+    var okMsg = bar.querySelector('.ok-msg'), errMsg = bar.querySelector('.err-msg');
+    bar.querySelector('button').onclick = function () {
+      okMsg.style.display = 'none'; errMsg.style.display = 'none';
+      saveFn().then(function (res) {
+        if (res && res.ok) { okMsg.textContent = 'Tersimpan!'; okMsg.style.display = 'inline'; setTimeout(function () { okMsg.style.display = 'none'; }, 2500); }
+        else { errMsg.textContent = (res && res.error) || 'Gagal menyimpan.'; errMsg.style.display = 'inline'; }
+      }).catch(function () { errMsg.textContent = 'Tidak bisa terhubung ke server.'; errMsg.style.display = 'inline'; });
+    };
+    holder.appendChild(bar);
+  }
+
+  // ===================== PANEL DISPATCH =====================
+  function renderPanel(holder, pageKey) {
+    holder.innerHTML = '';
+    var cfg = PAGES[pageKey];
+    var data = state.data[pageKey];
+    var wrapper = el('<div class="panel active"></div>');
+    holder.appendChild(wrapper);
+
+    function saveWhole() { return post('save', pageKey, data); }
+
+    if (cfg.root) {
+      renderRootArrayPanel(wrapper, pageKey, cfg, data, cfg.root, saveWhole);
+      return;
+    }
+
+    // halaman dengan beberapa blok berbeda (custom)
+    cfg.customKeys.forEach(function (block, idx) {
+      var section = el('<div style="margin-bottom:30px' + (idx < cfg.customKeys.length - 1 ? ';border-bottom:1px solid var(--gray-100);padding-bottom:24px' : '') + '"></div>');
+      if (block.root) {
+        renderRootArrayBlock(section, block, data);
+      } else if (block.strListRoot) {
+        section.appendChild(el('<h3 style="font-family:var(--font-display);font-size:15px;color:var(--navy);margin-bottom:10px">' + block.title + '</h3>'));
+        var tmpObj = { _v: data[block.key] || [] };
+        renderField(section, tmpObj, { key: '_v', label: '', type: 'strList' }, function () { data[block.key] = tmpObj._v; });
+        data[block.key] = tmpObj._v;
+      } else if (block.textRoot) {
+        section.appendChild(el('<h3 style="font-family:var(--font-display);font-size:15px;color:var(--navy);margin-bottom:10px">' + block.title + '</h3>'));
+        var tmpObj2 = { _v: data[block.key] || '' };
+        renderField(section, tmpObj2, { key: '_v', label: '', type: 'textarea' }, function () { data[block.key] = tmpObj2._v; });
+      } else if (block.single) {
+        section.appendChild(el('<h3 style="font-family:var(--font-display);font-size:15px;color:var(--navy);margin-bottom:10px">' + block.title + '</h3>'));
+        data[block.key] = data[block.key] || {};
+        block.fields.forEach(function (f) { renderField(section, data[block.key], f); });
+      }
+      wrapper.appendChild(section);
+    });
+
+    appendSaveBar(wrapper, saveWhole);
+  }
+
+  function renderRootArrayBlock(section, cfg, data) {
+    var arr = data[cfg.key] = data[cfg.key] || [];
+    var head = el('<div class="panel-head"><h3></h3><button class="btn btn-secondary btn-small" type="button">+ Tambah</button></div>');
+    head.querySelector('h3').textContent = cfg.title;
+    head.querySelector('h3').style.cssText = 'font-family:var(--font-display);font-size:15px;color:var(--navy)';
+    section.appendChild(head);
+    var listWrap = el('<div></div>');
+    section.appendChild(listWrap);
+    function draw() {
+      listWrap.innerHTML = '';
+      if (!arr.length) listWrap.appendChild(el('<div class="sub-empty">Belum ada data.</div>'));
+      arr.forEach(function (item, i) {
+        var card = el('<div class="item-card"></div>');
+        var headRow = el('<div class="item-head"><strong></strong><div class="item-actions"></div></div>');
+        headRow.querySelector('strong').textContent = cfg.itemTitle(item);
+        var actions = headRow.querySelector('.item-actions');
+        var upBtn = el('<button type="button" title="Naik">&uarr;</button>');
+        upBtn.onclick = function (ev) { ev.stopPropagation(); if (i > 0) { arr.splice(i, 1, arr.splice(i - 1, 1, arr[i])[0]); draw(); } };
+        var downBtn = el('<button type="button" title="Turun">&darr;</button>');
+        downBtn.onclick = function (ev) { ev.stopPropagation(); if (i < arr.length - 1) { arr.splice(i, 1, arr.splice(i + 1, 1, arr[i])[0]); draw(); } };
+        var delBtn = el('<button type="button" title="Hapus">&#10005;</button>');
+        delBtn.onclick = function (ev) { ev.stopPropagation(); if (confirm('Hapus item ini?')) { arr.splice(i, 1); draw(); } };
+        actions.appendChild(upBtn); actions.appendChild(downBtn); actions.appendChild(delBtn);
+        var body = el('<div class="item-body"></div>');
+        cfg.fields.forEach(function (f) { renderField(body, item, f, function () { headRow.querySelector('strong').textContent = cfg.itemTitle(item); }); });
+        headRow.onclick = function () { body.classList.toggle('open'); };
+        card.appendChild(headRow); card.appendChild(body);
+        listWrap.appendChild(card);
+      });
+    }
+    draw();
+    head.querySelector('button').onclick = function () { arr.push(cfg.newItem()); draw(); };
+  }
+
+  // ===================== INIT =====================
+  get('status').then(function (res) {
+    if (res && res.ok && res.loggedIn && res.canEdit) {
+      state.loggedIn = true;
+      renderApp();
+    } else if (res && res.ok && res.loggedIn) {
+      renderAccessDenied('Akun Anda tidak memiliki izin mengelola konten.');
+    } else {
+      renderAccessDenied('Silakan login melalui admin.html terlebih dahulu. Setelah login, buka menu Konten Website.');
+    }
+  }).catch(function () {
+    renderAccessDenied('Tidak dapat memeriksa sesi. Pastikan website dijalankan melalui server PHP.');
+  });
+})();
+</script>
+</body>
+</html>

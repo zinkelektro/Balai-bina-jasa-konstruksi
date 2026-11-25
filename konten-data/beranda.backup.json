@@ -1,0 +1,58 @@
+{
+    "header": {
+        "eyebrow": "Pilih Jenis Layanan Kami",
+        "judul": "Jenis Layanan",
+        "sub": "Tersedia berbagai layanan pengujian material dan pembinaan jasa konstruksi yang dapat diajukan."
+    },
+    "layanan": [
+        {
+            "judul": "Sertifikasi Tenaga Ahli Konstruksi",
+            "desc": "Penerbitan Sertifikat Keahlian (SKA) dan Sertifikat Keterampilan (SKT) bagi tenaga kerja jasa konstruksi.",
+            "tema": "navy",
+            "ikon": "sertifikat",
+            "tombol": "Ajukan sekarang"
+        },
+        {
+            "judul": "Pengujian Material Beton",
+            "desc": "Uji kuat tekan beton, uji slump, analisis campuran beton (mix design), dan pengujian core drill beton existing.",
+            "tema": "red",
+            "ikon": "jam",
+            "tombol": "Ajukan sekarang"
+        },
+        {
+            "judul": "Pengujian Aspal dan Campuran Beraspal",
+            "desc": "Uji penetrasi aspal, marshall test, ekstraksi, gradasi agregat untuk perkerasan jalan dan jembatan.",
+            "tema": "gold",
+            "ikon": "aspal",
+            "tombol": "Ajukan sekarang"
+        },
+        {
+            "judul": "Pengujian Tanah dan Geoteknik",
+            "desc": "Analisis saringan tanah, batas Atterberg, uji kepadatan (CBR, Proctor), dan klasifikasi tanah untuk pondasi.",
+            "tema": "teal",
+            "ikon": "tanah",
+            "tombol": "Ajukan sekarang"
+        },
+        {
+            "judul": "Pengujian Baja dan Material Struktur",
+            "desc": "Uji tarik, uji lentur, analisis tegangan baja tulangan, baja profil, dan material struktur lainnya.",
+            "tema": "navy",
+            "ikon": "baja",
+            "tombol": "Ajukan sekarang"
+        },
+        {
+            "judul": "Pelatihan dan Bimbingan Teknis",
+            "desc": "Bimtek operator konstruksi, pelatihan teknisi laboratorium, dan peningkatan kompetensi tenaga kerja konstruksi.",
+            "tema": "red",
+            "ikon": "buku",
+            "tombol": "Daftar sekarang"
+        },
+        {
+            "judul": "Konsultasi Teknis Konstruksi",
+            "desc": "Layanan konsultasi teknis seputar standar mutu, spesifikasi material, dan persyaratan jasa konstruksi di NTB.",
+            "tema": "teal",
+            "ikon": "pensil",
+            "tombol": "Konsultasi"
+        }
+    ]
+}

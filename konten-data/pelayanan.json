@@ -1,0 +1,95 @@
+{
+    "alur": [
+        {
+            "judul": "Ajukan Permohonan",
+            "desc": "Via WhatsApp, email, atau datang langsung ke kantor UPTD"
+        },
+        {
+            "judul": "Kaji Ulang",
+            "desc": "UPTD mengkaji permohonan sesuai kriteria dan kapasitas lab"
+        },
+        {
+            "judul": "Serahkan Contoh Uji",
+            "desc": "Pelanggan menyerahkan sampel atau petugas melakukan sampling"
+        },
+        {
+            "judul": "Verifikasi Sampel",
+            "desc": "Pencatatan dan verifikasi sampel oleh petugas laboratorium"
+        },
+        {
+            "judul": "Pelaksanaan Uji",
+            "desc": "Pengujian oleh tenaga teknis bersertifikat di laboratorium"
+        },
+        {
+            "judul": "Penerbitan LHU",
+            "desc": "UPTD menyusun Laporan Hasil Uji sesuai format standar"
+        },
+        {
+            "judul": "Penyerahan Laporan",
+            "desc": "Pelanggan menerima laporan resmi yang terverifikasi"
+        },
+        {
+            "judul": "Penanganan Keluhan",
+            "desc": "Tindak lanjut keluhan jika terdapat ketidaksesuaian hasil"
+        }
+    ],
+    "layanan": [
+        {
+            "judul": "Pengujian Material Beton",
+            "desc": "Uji kuat tekan, slump, mix design, dan core drill beton sesuai SNI. Waktu layanan 3–28 hari sesuai umur beton.",
+            "tema": "navy",
+            "ikon": "beton",
+            "tautan": "Ajukan"
+        },
+        {
+            "judul": "Pengujian Aspal dan Campuran",
+            "desc": "Marshall test, penetrasi aspal, ekstraksi, dan gradasi. Waktu layanan 1–3 hari kerja.",
+            "tema": "gold",
+            "ikon": "aspal",
+            "tautan": "Ajukan"
+        },
+        {
+            "judul": "Pengujian Tanah dan Geoteknik",
+            "desc": "CBR, Proctor, Atterberg, analisis saringan, dan klasifikasi tanah. Waktu layanan 14 hari kerja.",
+            "tema": "teal",
+            "ikon": "tanah",
+            "tautan": "Ajukan"
+        },
+        {
+            "judul": "Sertifikasi Tenaga Ahli Konstruksi",
+            "desc": "Penerbitan SKA dan SKT bagi tenaga kerja jasa konstruksi di wilayah NTB.",
+            "tema": "navy",
+            "ikon": "dokumen",
+            "tautan": "Daftar"
+        },
+        {
+            "judul": "Pelatihan dan Bimbingan Teknis",
+            "desc": "Bimtek operator, teknisi laboratorium, dan mandor konstruksi bersertifikat BNSP.",
+            "tema": "teal",
+            "ikon": "alat",
+            "tautan": "Daftar"
+        }
+    ],
+    "jam": [
+        {
+            "judul": "Jam Operasional",
+            "nilai": "Senin – Jumat",
+            "catatan": "08.00 – 16.00 WITA"
+        },
+        {
+            "judul": "Telepon",
+            "nilai": "(0370) 627487",
+            "catatan": "Jam kerja"
+        },
+        {
+            "judul": "Alamat",
+            "nilai": "Jl. Majapahit No. 8",
+            "catatan": "Mataram, NTB 83121"
+        },
+        {
+            "judul": "Pengambilan Dokumen",
+            "nilai": "Senin – Jumat",
+            "catatan": "09.00 – 14.00 WITA"
+        }
+    ]
+}

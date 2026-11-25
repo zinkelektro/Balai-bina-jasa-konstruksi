@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang UPTD — Bina Jasa Konstruksi NTB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .page-hero{background:linear-gradient(90deg,rgba(13,37,69,.93) 0%,rgba(22,51,102,.84) 45%,rgba(30,64,128,.55) 100%),url("assets/hero-lab.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;padding:100px 20px 60px;text-align:center;color:#fff}
+  .page-hero-eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:14px}
+  .page-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(26px,4vw,44px);font-weight:800;margin-bottom:14px}
+  .page-hero p{font-size:16px;color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto}
+  .breadcrumb{display:flex;align-items:center;gap:6px;justify-content:center;font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:10px}
+  .breadcrumb a{color:rgba(255,255,255,0.7);text-decoration:none}
+  .content-section{padding:60px 20px}
+  .content-inner{max-width:1100px;margin:0 auto}
+  .section-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red-gov);display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .section-eyebrow::before{content:'';display:block;width:24px;height:2px;background:var(--red-gov)}
+  .section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(20px,2.8vw,32px);font-weight:800;color:var(--navy);margin-bottom:10px}
+  .section-sub{font-size:15px;color:var(--text-sub);max-width:700px;line-height:1.7;margin-bottom:36px}
+  .profil-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:50px}
+  @media(max-width:700px){.profil-grid{grid-template-columns:1fr}}
+  .profil-text p{font-size:15px;color:var(--text-sub);line-height:1.75;margin-bottom:16px}
+  .visi-misi-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:10px}
+  @media(max-width:640px){.visi-misi-grid{grid-template-columns:1fr}}
+  .vm-card{border-radius:14px;padding:26px}
+  .vm-card.visi{background:var(--navy);color:#fff}
+  .vm-card.misi{background:var(--gray-50);border:1px solid var(--gray-100)}
+  .vm-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+  .vm-card.visi .vm-label{color:rgba(255,255,255,0.55)}
+  .vm-card.misi .vm-label{color:var(--red-gov)}
+  .vm-card.visi h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:700;color:#fff;line-height:1.5}
+  .vm-card.misi ul{padding:0;list-style:none}
+  .vm-card.misi ul li{font-size:13.5px;color:var(--text-sub);padding:7px 0;padding-left:18px;position:relative;border-bottom:1px solid var(--gray-100)}
+  .vm-card.misi ul li:last-child{border-bottom:none}
+  .vm-card.misi ul li::before{content:'→';position:absolute;left:0;color:var(--red-gov);font-weight:700}
+  .struktur-grid{margin-top:10px}
+  .struktur-tier{margin-bottom:34px;position:relative}
+  .struktur-tier+.struktur-tier:before{content:'';display:block;width:2px;height:22px;background:var(--gray-100);margin:-18px auto 16px}
+  .tier-label{text-align:center;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+  .unit-label{text-align:center;font-size:13px;font-weight:700;color:var(--navy);margin:6px 0 12px}
+  .tier-row{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-bottom:14px}
+  .tier-row .jabatan-card{width:210px;max-width:100%}
+  .jabatan-card{background:#fff;border:1px solid var(--gray-100);border-radius:12px;padding:20px;text-align:center;box-shadow:var(--shadow-card)}
+  .jabatan-avatar{width:84px;height:84px;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800}
+  .jabatan-avatar.has-foto{background:var(--gray-100);border:3px solid #fff;box-shadow:0 0 0 2px var(--navy)}
+  .jabatan-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .jabatan-orang{font-family:'Plus Jakarta Sans',sans-serif;font-size:14.5px;font-weight:800;color:var(--navy);margin-bottom:3px;line-height:1.3}
+  .jabatan-nama{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;color:var(--text-sub,#5A6478);margin-bottom:4px}
+  .jabatan-pos{font-size:12px;color:var(--text-muted);line-height:1.4}
+  .dasar-hukum{background:var(--gray-50);border-radius:14px;padding:28px;margin-top:40px}
+  .dasar-hukum h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .dh-list{list-style:none;padding:0}
+  .dh-list li{font-size:13.5px;color:var(--text-sub);padding:9px 0;padding-left:18px;border-bottom:1px solid var(--gray-200);position:relative}
+  .dh-list li:last-child{border-bottom:none}
+  .dh-list li::before{content:'§';position:absolute;left:0;color:var(--red-gov);font-weight:700}
+  .cta-strip{background:var(--gray-50);border-top:1px solid var(--gray-100);padding:50px 20px;text-align:center}
+  .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--red-gov);color:#fff;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;transition:background .2s}
+  .cta-btn:hover{background:#a01f24}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-brand">
+      <img src="assets/logo-uptd.png" class="site-logo" alt="Logo UPTD Provinsi NTB">
+      <div class="site-brand-text">
+        <strong>UPTD</strong>
+        <span>BINA JASA KONSTRUKSI<br>DAN PENGUJIAN MATERIAL</span>
+        <small>PROVINSI NUSA TENGGARA BARAT</small>
+      </div>
+    </a>
+    <button class="hamburger" aria-label="Buka menu" onclick="document.getElementById('mainNav').classList.toggle('open')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav id="mainNav" class="main-nav">
+      <a href="index.html#beranda" class="nav-link"><span class="nav-home"></span> Beranda</a>
+      <a href="tentang.html" class="nav-link">Profil</a>
+      <a href="index.html#layanan" class="nav-link">Layanan</a>
+      <a href="index.html#berita" class="nav-link">Berita</a>
+      <a href="index.html#pengumuman" class="nav-link">Pengumuman</a>
+      <a href="index.html#unduhan" class="nav-link">Unduhan</a>
+      <a href="admin.html" class="nav-link">Login</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <a class="btn-kembali" href="index.html" aria-label="Kembali ke Beranda">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Kembali ke Beranda
+  </a>
+  <div class="breadcrumb">
+    <a href="index.html">Beranda</a>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    <span>Tentang UPTD</span>
+  </div>
+  <div class="page-hero-eyebrow">Profil Lembaga</div>
+  <h1>Tentang UPTD<br>Bina Jasa Konstruksi Dan Pengujian Material</h1>
+ 
+</section>
+
+<section class="content-section">
+  <div class="content-inner">
+    <div class="profil-grid">
+      <div class="profil-text">
+        <div class="section-eyebrow">Profil Lembaga</div>
+        <h2 class="section-title">Siapa Kami?</h2>
+        <div id="profilWrap">
+        <p>UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi adalah Unit Pelaksana Teknis Daerah di bawah Dinas Pekerjaan Umum dan Penataan Ruang (PUPR) Provinsi Nusa Tenggara Barat yang bertugas menyelenggarakan pelayanan teknis di bidang jasa konstruksi dan pengujian material bangunan.</p>
+        <p>Berdiri sejak lebih dari dua dekade lalu, UPTD kami telah melayani ribuan pelanggan dari sektor pemerintah maupun swasta, mulai dari kontraktor, konsultan, hingga instansi pemerintah yang membutuhkan layanan pengujian material konstruksi yang akurat dan terstandar.</p>
+        <p>Dengan fasilitas laboratorium yang terakreditasi KAN berdasarkan SNI/ISO/IEC 17025:2017, kami berkomitmen memberikan hasil pengujian yang valid, terpercaya, dan diakui secara nasional maupun internasional.</p>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--navy);border-radius:16px;padding:28px;color:#fff">
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px">Identitas Lembaga</div>
+          <table style="width:100%;border-collapse:collapse;font-size:13.5px">
+            <tbody id="identitasWrap">
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+              <td style="padding:9px 0;color:rgba(255,255,255,0.55);width:45%">Nama Lengkap</td>
+              <td style="padding:9px 0;color:#fff;font-weight:500">UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+              <td style="padding:9px 0;color:rgba(255,255,255,0.55)">Induk</td>
+              <td style="padding:9px 0;color:#fff;font-weight:500">Dinas PUPR Provinsi NTB</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+              <td style="padding:9px 0;color:rgba(255,255,255,0.55)">Alamat</td>
+              <td style="padding:9px 0;color:#fff;font-weight:500">Jl. Majapahit No. 8, Mataram 83121</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+              <td style="padding:9px 0;color:rgba(255,255,255,0.55)">Telepon</td>
+              <td style="padding:9px 0;color:#fff;font-weight:500">(0370) 627487</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+              <td style="padding:9px 0;color:rgba(255,255,255,0.55)">Akreditasi</td>
+              <td style="padding:9px 0;color:#fff;font-weight:500">KAN SNI/ISO 17025:2017</td>
+            </tr>
+            <tr>
+              <td style="padding:9px 0;color:rgba(255,255,255,0.55)">Jam Layanan</td>
+              <td style="padding:9px 0;color:#fff;font-weight:500">Senin–Jumat, 08.00–16.00 WITA</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Arah Strategis</div>
+    <h2 class="section-title">Visi dan Misi</h2>
+    <div class="visi-misi-grid">
+      <div class="vm-card visi">
+        <div class="vm-label">Visi</div>
+        <h3 id="visiWrap">Menjadi laboratorium pengujian dan pembinaan jasa konstruksi terdepan di Nusa Tenggara Barat yang profesional, inovatif, dan berstandar internasional.</h3>
+      </div>
+      <div class="vm-card misi">
+        <div class="vm-label">Misi</div>
+        <ul id="misiWrap">
+          <li>Menyelenggarakan pengujian material konstruksi yang akurat dan terstandar SNI/ISO</li>
+          <li>Meningkatkan kompetensi tenaga kerja jasa konstruksi NTB melalui sertifikasi dan pelatihan</li>
+          <li>Mengembangkan fasilitas dan sistem manajemen mutu laboratorium secara berkelanjutan</li>
+          <li>Memberikan pelayanan yang cepat, transparan, dan terjangkau bagi masyarakat</li>
+          <li>Mendukung pembangunan infrastruktur berkualitas di Provinsi Nusa Tenggara Barat</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:56px">
+      <div class="section-eyebrow">Tim Kami</div>
+      <h2 class="section-title">Struktur Organisasi</h2>
+      <p class="section-sub" style="margin-bottom:28px">Dikelola oleh tenaga profesional berpengalaman di bidang pengujian material dan pembinaan jasa konstruksi.</p>
+      <div class="struktur-grid" id="strukturWrap"><div class="tier-row">
+        <div class="jabatan-card">
+          <div class="jabatan-avatar">K</div>
+          <div class="jabatan-nama">Kepala UPTD</div>
+          <div class="jabatan-pos">Pimpinan Tertinggi<br>Unit Pelaksana Teknis Daerah</div>
+        </div>
+        <div class="jabatan-card">
+          <div class="jabatan-avatar">KSU</div>
+          <div class="jabatan-nama">Ka. Subbag Tata Usaha</div>
+          <div class="jabatan-pos">Administrasi, Keuangan,<br>dan Kepegawaian</div>
+        </div>
+        <div class="jabatan-card">
+          <div class="jabatan-avatar">KPL</div>
+          <div class="jabatan-nama">Ka. Seksi Pengujian Lab</div>
+          <div class="jabatan-pos">Koordinasi Pengujian<br>Material Konstruksi</div>
+        </div>
+        <div class="jabatan-card">
+          <div class="jabatan-avatar">KBK</div>
+          <div class="jabatan-nama">Ka. Seksi Bina Konstruksi</div>
+          <div class="jabatan-pos">Sertifikasi dan Bimbingan<br>Tenaga Kerja Konstruksi</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="dasar-hukum">
+      <h4>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2545" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Dasar Hukum
+      </h4>
+      <ul class="dh-list" id="dasarHukumWrap">
+        <li>UU No. 2 Tahun 2017 tentang Jasa Konstruksi</li>
+        <li>PP No. 22 Tahun 2020 tentang Peraturan Pelaksanaan UU Jasa Konstruksi</li>
+        <li>Peraturan Gubernur NTB tentang Pembentukan, Susunan Organisasi, dan Tata Kerja UPTD</li>
+        <li>SNI/ISO/IEC 17025:2017 — Persyaratan Umum Kompetensi Laboratorium Pengujian dan Kalibrasi</li>
+        <li>Perda NTB No. 3 Tahun 2026 tentang Retribusi Daerah (Tarif Layanan Pengujian)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--navy);margin-bottom:10px">Hubungi Kami</h3>
+  <p style="color:var(--text-sub);margin-bottom:22px;font-size:15px">Konsultasikan kebutuhan pengujian atau sertifikasi konstruksi Anda dengan tim kami.</p>
+  <a href="index.html#kontak" class="cta-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 5 5l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17v-.08z"/></svg>
+    Lihat Kontak Kami
+  </a>
+</div>
+
+<footer class="kontak-bg" style="padding:28px 20px">
+  <div class="footer">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi — Dinas PUPR Prov. NTB.</span>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Beranda</a>
+        <a href="https://balaibijak.my.id/admin.html" class="footer-link">Login</a>
+        <a href="admin-konten.html" class="footer-link">Kelola Konten Kartu</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('siteHeader').style.position = 'relative';
+  document.getElementById('siteHeader').style.background = 'var(--white)';
+</script>
+<script src="js/konten-shared.js"></script>
+<script src="js/render-tentang.js"></script>
+<script>
+(function(){
+  var here = (location.pathname.split('/').pop() || 'index.html').split('#')[0];
+  if (here === '') here = 'index.html';
+  document.querySelectorAll('#mainNav .nav-link').forEach(function(a){
+    var href = (a.getAttribute('href') || '').split('#')[0];
+    a.classList.remove('active');
+    if (href && href !== 'admin.html' && href === here) a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

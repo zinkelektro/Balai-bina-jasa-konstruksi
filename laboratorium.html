@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratorium Pengujian — UPTD Bina Jasa Konstruksi NTB</title>
+<meta name="description" content="Laboratorium Pengujian Material Konstruksi UPTD Provinsi Nusa Tenggara Barat">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* =========================================================
+   HALAMAN LABORATORIUM
+   Gaya diselaraskan dengan desain utama UPTD
+   ========================================================= */
+
+/* HERO */
+.page-hero {
+    position: relative;
+    min-height: 440px;
+    box-sizing: border-box;
+
+    /* Ganti nama file di bawah jika nama gambar berbeda */
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 82, 170, 0.94) 0%,
+            rgba(0, 91, 185, 0.82) 38%,
+            rgba(0, 100, 190, 0.42) 68%,
+            rgba(0, 100, 190, 0.08) 100%
+        ),
+        url("assets/hero-lab.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 70px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    text-align: left;
+    color: #fff;
+}
+
+.page-hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin: 0 0 20px;
+
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+
+    color: #fff;
+}
+
+.page-hero-eyebrow::before {
+    content: "";
+    width: 48px;
+    height: 5px;
+    flex: 0 0 auto;
+    background: #ffc800;
+}
+
+.page-hero h1 {
+    max-width: 780px;
+    margin: 0 0 16px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(34px, 4.2vw, 56px);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+
+    color: #fff;
+}
+
+.page-hero h1 span {
+    color: #ffc800;
+}
+
+.page-hero p {
+    max-width: 650px;
+    margin: 0 0 22px;
+
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 500;
+
+    color: rgba(255,255,255,.95);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin: 0 0 18px;
+
+    font-size: 13px;
+    color: rgba(255,255,255,.75);
+}
+
+.breadcrumb a {
+    color: rgba(255,255,255,.9);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #fff;
+}
+
+.badge-akred {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: 0;
+    padding: 7px 15px;
+
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 20px;
+
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 8px;
+
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: background .2s;
+    margin-bottom: 20px;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,.2);
+}
+
+
+/* CONTENT */
+.content-section {
+    padding: 55px 20px;
+}
+
+.content-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 10px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #075bb5;
+}
+
+.section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #ffc800;
+}
+
+.section-title {
+    margin-bottom: 10px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(22px, 2.8vw, 34px);
+    font-weight: 800;
+
+    color: #0d3768;
+}
+
+.section-sub {
+    max-width: 680px;
+    margin-bottom: 35px;
+
+    font-size: 15px;
+    line-height: 1.7;
+    color: #64748b;
+}
+
+
+/* KARTU LABORATORIUM */
+.lab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin-top: 10px;
+}
+
+.lab-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(30,80,130,.07);
+    border: 1px solid #e5edf5;
+    padding: 26px;
+
+    transition:
+        box-shadow .2s,
+        transform .2s;
+}
+
+.lab-card:hover {
+    box-shadow: 0 12px 30px rgba(30,80,130,.12);
+    transform: translateY(-3px);
+}
+
+.lab-card-icon {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 16px;
+}
+
+.lab-card-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.navy-bg {
+    background: #e5effa;
+}
+
+.red-bg {
+    background: #e5effa;
+}
+
+.gold-bg {
+    background: #fff4cc;
+}
+
+.teal-bg {
+    background: #e0f4ef;
+}
+
+.lab-card h3 {
+    margin-bottom: 8px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+
+    color: #0d3768;
+}
+
+.lab-card p {
+    font-size: 13.5px;
+    color: #64748b;
+    line-height: 1.65;
+}
+
+.lab-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+}
+
+.lab-card ul li {
+    position: relative;
+
+    font-size: 13px;
+    color: #64748b;
+
+    padding: 4px 0 4px 16px;
+}
+
+.lab-card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+
+    color: #075bb5;
+    font-weight: 700;
+}
+
+
+/* STATISTIK */
+.stats-strip {
+    background: #075bb5;
+    padding: 10px 20px;
+}
+
+.stats-inner {
+    max-width: 900px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 30px;
+
+    text-align: center;
+}
+
+.stat-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: #ffc800;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,.75);
+    margin-top: 4px;
+}
+
+
+/* AKREDITASI */
+.akred-box {
+    background: linear-gradient(135deg, #f7faff, #eef5fc);
+    border: 1px solid #dce8f5;
+    border-radius: 16px;
+
+    padding: 30px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+
+    margin-top: 30px;
+}
+
+.akred-icon {
+    flex: 0 0 54px;
+
+    width: 54px;
+    height: 54px;
+
+    background: #e5effa;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.akred-icon svg {
+    width: 28px;
+    height: 28px;
+    color: #075bb5;
+}
+
+.akred-content h4 {
+    margin-bottom: 6px;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #0d3768;
+}
+
+.akred-content p {
+    font-size: 13.5px;
+    color: #64748b;
+    line-height: 1.65;
+}
+
+
+/* CTA */
+.cta-strip {
+    background: #f7faff;
+    border-top: 1px solid #e5edf5;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.cta-strip h3 {
+    color: #0d3768 !important;
+}
+
+.cta-strip p {
+    color: #64748b !important;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 28px;
+
+    background: #ffc800;
+    color: #075bb5;
+
+    border-radius: 30px;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+.cta-btn:hover {
+    background: #ffc800;
+    color: #075bb5;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+
+    .page-hero {
+        min-height: 470px;
+        padding: 50px 25px;
+
+        background-position: 65% center;
+    }
+
+    .page-hero h1 {
+        font-size: 36px;
+    }
+
+    .content-section {
+        padding: 40px 18px;
+    }
+
+    .stats-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .akred-box {
+        flex-direction: column;
+    }
+}
+</style>
+  <link rel="stylesheet" href="css/ajukan-layanan.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-brand" aria-label="UPTD Bina Jasa Konstruksi dan Pengujian Material">
+      <img src="assets/logo-uptd.png" class="site-logo" alt="Logo UPTD Provinsi NTB">
+      <div class="site-brand-text">
+        <strong>UPTD</strong>
+        <span>BINA JASA KONSTRUKSI<br>DAN PENGUJIAN MATERIAL</span>
+        <small>PROVINSI NUSA TENGGARA BARAT</small>
+      </div>
+    </a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Buka menu" onclick="document.getElementById('mainNav').classList.toggle('open')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <nav id="mainNav" class="main-nav">
+      <a href="index.html#beranda" class="nav-link"><span class="nav-home"></span> Beranda</a>
+      <a href="index.html#profil" class="nav-link">Profil</a>
+      <a href="index.html#layanan" class="nav-link">Layanan</a>
+      <a href="index.html#berita" class="nav-link">Berita</a>
+      <a href="index.html#pengumuman" class="nav-link">Pengumuman</a>
+      <a href="index.html#unduhan" class="nav-link">Unduhan</a>
+      <a href="https://logbook.balaibijak.my.id/login.php" class="nav-link">Login</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <a class="btn-kembali" href="index.html" aria-label="Kembali ke Beranda">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Kembali ke Beranda
+  </a>
+  <div class="breadcrumb">
+    <a href="index.html">Beranda</a>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    <span>Laboratorium Pengujian</span>
+  </div>
+  <div class="page-hero-eyebrow">Fasilitas Utama</div>
+  <h1>Laboratorium Pengujian<br><span>Material Konstruksi</span></h1>
+  <p>Laboratorium terakreditasi KAN SNI/ISO/IEC 17025:2017 untuk pengujian material konstruksi yang akurat dan terpercaya.</p>
+  <span class="badge-akred">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    Terakreditasi KAN SNI/ISO 17025:2017
+  </span>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner" id="labStatWrap">
+    <div><div class="stat-num">3.870+</div><div class="stat-label">Pengujian Dilakukan</div></div>
+    <div><div class="stat-num">12</div><div class="stat-label">Ruang Lab Aktif</div></div>
+    <div><div class="stat-num">48+</div><div class="stat-label">Parameter Uji</div></div>
+    <div><div class="stat-num">25+</div><div class="stat-label">Tahun Pengalaman</div></div>
+  </div>
+</div>
+
+<section class="content-section">
+  <div class="content-inner">
+    <div class="section-eyebrow">Unit Laboratorium</div>
+    <h2 class="section-title">Fasilitas Laboratorium Kami</h2>
+    <p class="section-sub">UPTD mengoperasikan beberapa unit laboratorium spesialis yang dilengkapi peralatan modern dan dikelola oleh tenaga teknis bersertifikat.</p>
+
+    <div class="lab-grid" id="labUnitWrap">
+      <div class="lab-card">
+        <div class="lab-card-icon navy-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0D2545" stroke-width="2"><path d="M9 2h6M10 2v6.5L4.5 19a1 1 0 0 0 .9 1.5h13.2a1 1 0 0 0 .9-1.5L14 8.5V2"/><path d="M7 15h10"/></svg>
+        </div>
+        <h3>Laboratorium Beton</h3>
+        <p>Pengujian kuat tekan, kuat tarik belah, modulus elastisitas, dan karakteristik campuran beton.</p>
+        <ul>
+          <li>Uji kuat tekan beton (SNI 03-1974)</li>
+          <li>Uji slump dan flow table</li>
+          <li>Mix design beton normal</li>
+          <li>Core drill dan pengujian beton existing</li>
+        </ul>
+      </div>
+      <div class="lab-card">
+        <div class="lab-card-icon gold-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8B6200" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Laboratorium Aspal</h3>
+        <p>Pengujian karakteristik aspal dan campuran beraspal panas untuk perkerasan jalan.</p>
+        <ul>
+          <li>Penetrasi dan titik lembek aspal</li>
+          <li>Marshall test campuran aspal</li>
+          <li>Ekstraksi dan gradasi agregat</li>
+          <li>Uji densitas dan void campuran</li>
+        </ul>
+      </div>
+      <div class="lab-card">
+        <div class="lab-card-icon teal-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#14826E" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>Laboratorium Mekanika Tanah</h3>
+        <p>Analisis sifat fisik dan mekanis tanah untuk keperluan desain pondasi dan perkerasan.</p>
+        <ul>
+          <li>Batas Atterberg (LL, PL, PI)</li>
+          <li>CBR laboratorium dan lapangan</li>
+          <li>Proctor standar dan modifikasi</li>
+          <li>Analisis saringan dan hidrometer</li>
+        </ul>
+      </div>
+      <div class="lab-card">
+        <div class="lab-card-icon red-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C0272D" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Laboratorium Baja dan Struktur</h3>
+        <p>Pengujian sifat mekanis material baja tulangan, baja profil, dan material struktur lainnya.</p>
+        <ul>
+          <li>Uji tarik baja tulangan (SNI 2052)</li>
+          <li>Uji lentur dan tekuk baja profil</li>
+          <li>Pengukuran dimensi dan berat</li>
+          <li>Analisis tegangan dan regangan</li>
+        </ul>
+      </div>
+      <div class="lab-card">
+        <div class="lab-card-icon navy-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0D2545" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+        </div>
+        <h3>Laboratorium Agregat</h3>
+        <p>Pengujian kualitas agregat kasar dan halus sebagai bahan baku material konstruksi.</p>
+        <ul>
+          <li>Gradasi dan analisis saringan</li>
+          <li>Keausan agregat (Los Angeles)</li>
+          <li>Berat jenis dan penyerapan air</li>
+          <li>Sand equivalent test</li>
+        </ul>
+      </div>
+      <div class="lab-card">
+        <div class="lab-card-icon teal-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#14826E" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M4 12a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"/></svg>
+        </div>
+        <h3>Unit Sampling & Pengambilan Contoh</h3>
+        <p>Tim sampling lapangan yang siap mendukung pengambilan contoh uji di lokasi proyek.</p>
+        <ul>
+          <li>Sampling beton segar di lapangan</li>
+          <li>Pengambilan inti bor (core drill)</li>
+          <li>Sampling tanah undisturbed</li>
+          <li>DCP test dan plate load test</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="akred-box">
+      <div class="akred-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0D2545" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="akred-content">
+        <h4 id="labAkredJudul">Akreditasi KAN SNI/ISO/IEC 17025:2017</h4>
+        <p id="labAkredDesc">Laboratorium UPTD telah mendapatkan akreditasi dari Komite Akreditasi Nasional (KAN) berdasarkan SNI/ISO/IEC 17025:2017 — standar internasional untuk kompetensi laboratorium pengujian dan kalibrasi. Akreditasi ini menjamin bahwa setiap hasil pengujian yang kami keluarkan memenuhi standar mutu yang dapat diakui secara nasional maupun internasional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--navy);margin-bottom:10px">Butuh Layanan Pengujian?</h3>
+  <p style="color:var(--text-sub);margin-bottom:22px;font-size:15px">Ajukan permohonan pengujian sekarang dan tim kami akan menghubungi Anda.</p>
+  <a href="#" onclick="return bukaFormLayananPage(event)" class="cta-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    Ajukan Permohonan
+  </a>
+</div>
+
+<footer class="kontak-bg" style="padding:28px 20px">
+  <div class="footer">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi — Dinas PUPR Prov. NTB.</span>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Beranda</a>
+        <a href="https://balaibijak.my.id/admin.html" class="footer-link">Login</a>
+        <a href="admin-konten.html" class="footer-link">Kelola Konten Kartu</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/konten-shared.js"></script>
+<script src="js/render-laboratorium.js"></script>
+  <script src="js/ajukan-layanan.js"></script>
+</body>
+</html>

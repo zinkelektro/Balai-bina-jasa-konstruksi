@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kegiatan Pengujian — UPTD Bina Jasa Konstruksi NTB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .page-hero{background:linear-gradient(90deg,rgba(13,37,69,.93) 0%,rgba(22,51,102,.84) 45%,rgba(30,64,128,.55) 100%),url("assets/hero-lab.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;padding:100px 20px 60px;text-align:center;color:#fff}
+  .page-hero-eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:14px}
+  .page-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(26px,4vw,44px);font-weight:800;margin-bottom:14px}
+  .page-hero p{font-size:16px;color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto}
+  .breadcrumb{display:flex;align-items:center;gap:6px;justify-content:center;font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:10px}
+  .breadcrumb a{color:rgba(255,255,255,0.7);text-decoration:none}
+  .content-section{padding:60px 20px}
+  .content-inner{max-width:1100px;margin:0 auto}
+  .section-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red-gov);display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .section-eyebrow::before{content:'';display:block;width:24px;height:2px;background:var(--red-gov)}
+  .section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(20px,2.8vw,32px);font-weight:800;color:var(--navy);margin-bottom:10px}
+  .section-sub{font-size:15px;color:var(--text-sub);max-width:640px;line-height:1.7;margin-bottom:36px}
+  .timeline{position:relative;padding-left:32px}
+  .timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--gray-200)}
+  .timeline-item{position:relative;margin-bottom:32px}
+  .timeline-dot{position:absolute;left:-26px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--navy);border:3px solid #fff;box-shadow:0 0 0 2px var(--navy)}
+  .timeline-date{font-size:11px;font-weight:700;color:var(--red-gov);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .timeline-card{background:#fff;border-radius:12px;border:1px solid var(--gray-100);box-shadow:var(--shadow-card);padding:20px 22px}
+  .timeline-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .timeline-card p{font-size:13.5px;color:var(--text-sub);line-height:1.65}
+  .timeline-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+  .tag-kegiatan{background:#e8edf5;color:#0D2545}
+  .tag-bimtek{background:#e0f4ef;color:#14826E}
+  .tag-sertifikasi{background:#fdf3d8;color:#8B6200}
+  .tag-kerjasama{background:#fce8e8;color:#C0272D}
+  .kegiatan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:10px}
+  .kegiatan-card{background:#fff;border-radius:14px;border:1px solid var(--gray-100);box-shadow:var(--shadow-card);padding:24px;display:flex;flex-direction:column;gap:12px}
+  .kegiatan-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:40px;font-weight:800;color:var(--gray-100);line-height:1}
+  .kegiatan-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-top:-6px}
+  .kegiatan-card p{font-size:13.5px;color:var(--text-sub);line-height:1.65}
+  .cta-strip{background:var(--gray-50);border-top:1px solid var(--gray-100);padding:50px 20px;text-align:center}
+  .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--red-gov);color:#fff;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;transition:background .2s}
+  .cta-btn:hover{background:#a01f24}
+</style>
+  <link rel="stylesheet" href="css/ajukan-layanan.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-brand">
+      <img src="assets/logo-uptd.png" class="site-logo" alt="Logo UPTD Provinsi NTB">
+      <div class="site-brand-text">
+        <strong>UPTD</strong>
+        <span>BINA JASA KONSTRUKSI<br>DAN PENGUJIAN MATERIAL</span>
+        <small>PROVINSI NUSA TENGGARA BARAT</small>
+      </div>
+    </a>
+    <button class="hamburger" aria-label="Buka menu" onclick="document.getElementById('mainNav').classList.toggle('open')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav id="mainNav" class="main-nav">
+      <a href="index.html#beranda" class="nav-link"><span class="nav-home"></span> Beranda</a>
+      <a href="index.html#profil" class="nav-link">Profil</a>
+      <a href="index.html#layanan" class="nav-link">Layanan</a>
+      <a href="index.html#berita" class="nav-link">Berita</a>
+      <a href="index.html#pengumuman" class="nav-link">Pengumuman</a>
+      <a href="index.html#unduhan" class="nav-link">Unduhan</a>
+      <a href="https://logbook.balaibijak.my.id/login.php" class="nav-link">Login</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <a class="btn-kembali" href="index.html" aria-label="Kembali ke Beranda">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Kembali ke Beranda
+  </a>
+  <div class="breadcrumb">
+    <a href="index.html">Beranda</a>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    <span>Kegiatan Pengujian</span>
+  </div>
+  <div class="page-hero-eyebrow">Rekam Jejak Kegiatan</div>
+  <h1>Kegiatan Pengujian<br>dan Sertifikasi</h1>
+  <p>Dokumentasi kegiatan pengujian material, bimbingan teknis, sertifikasi, dan kerja sama yang telah dilaksanakan UPTD NTB.</p>
+</section>
+
+<section class="content-section">
+  <div class="content-inner">
+    <div class="section-eyebrow">Statistik Kegiatan</div>
+    <h2 class="section-title">Pencapaian Tahun 2026</h2>
+    <p class="section-sub">Ringkasan kegiatan yang telah berhasil kami laksanakan sepanjang tahun 2026 untuk mendukung pembangunan konstruksi berkualitas di NTB.</p>
+
+    <div class="kegiatan-grid" id="kegiatanStatWrap">
+      <div class="kegiatan-card">
+        <div class="kegiatan-num">3.870</div>
+        <h3>Total Sampel Diuji</h3>
+        <p>Seluruh sampel material konstruksi yang telah diuji di laboratorium UPTD sepanjang 2026, meliputi beton, aspal, tanah, dan baja.</p>
+      </div>
+      <div class="kegiatan-card">
+        <div class="kegiatan-num">34</div>
+        <h3>Kegiatan Bimtek & Pelatihan</h3>
+        <p>Bimbingan teknis dan pelatihan sertifikasi yang diselenggarakan di berbagai kabupaten/kota di Provinsi NTB.</p>
+      </div>
+      <div class="kegiatan-card">
+        <div class="kegiatan-num">1.248</div>
+        <h3>Tenaga Kerja Tersertifikasi</h3>
+        <p>Mandor, operator, dan tenaga ahli konstruksi yang telah mendapatkan Sertifikat Keahlian (SKA) dan Keterampilan (SKT).</p>
+      </div>
+      <div class="kegiatan-card">
+        <div class="kegiatan-num">18</div>
+        <h3>Proyek Infrastruktur Dilayani</h3>
+        <p>Proyek infrastruktur strategis provinsi NTB yang mendapatkan dukungan pengujian material dari UPTD.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:60px">
+      <div class="section-eyebrow">Kronologi</div>
+      <h2 class="section-title">Kegiatan Terkini 2026</h2>
+      <p class="section-sub" style="margin-bottom:30px">Jejak kegiatan terkini yang telah dilaksanakan oleh UPTD Bina Jasa Konstruksi dan Pengujian Material NTB.</p>
+
+      <div class="timeline" id="kegiatanTimelineWrap">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">15 September 2026</div>
+          <div class="timeline-card">
+            <h4>Bimtek Pengujian Kualitas Campuran Aspal Panas</h4>
+            <p>Bimbingan teknis mengenai standar pengujian campuran aspal panas (Hot Mix Asphalt) yang diikuti oleh 45 peserta dari berbagai kontraktor jalan di seluruh wilayah Nusa Tenggara Barat.</p>
+            <div class="timeline-tags"><span class="tag tag-bimtek">Bimtek</span><span class="tag tag-kegiatan">Aspal</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">10 September 2026</div>
+          <div class="timeline-card">
+            <h4>Laboratorium Geoteknik Terima Akreditasi KAN</h4>
+            <p>Unit laboratorium geoteknik UPTD NTB resmi mendapatkan akreditasi KAN berdasarkan SNI/ISO 17025:2017, memperluas ruang lingkup pengujian tanah yang diakui secara nasional.</p>
+            <div class="timeline-tags"><span class="tag tag-sertifikasi">Akreditasi</span><span class="tag tag-kegiatan">Geoteknik</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2 September 2026</div>
+          <div class="timeline-card">
+            <h4>Peluncuran Sistem Antrian Online Layanan Pengujian</h4>
+            <p>UPTD meluncurkan fitur antrian dan permohonan layanan pengujian material secara online, memudahkan masyarakat jasa konstruksi dalam mengakses layanan laboratorium.</p>
+            <div class="timeline-tags"><span class="tag tag-kerjasama">Inovasi</span><span class="tag tag-kegiatan">Digital</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">25 Agustus 2026</div>
+          <div class="timeline-card">
+            <h4>Sertifikasi 120 Mandor Konstruksi Program BPJK 2026</h4>
+            <p>Pelaksanaan sertifikasi mandor konstruksi dalam rangka program Bina Profesi Jasa Konstruksi (BPJK) 2026, bekerjasama dengan LPJK Nasional dan Asosiasi Kontraktor NTB.</p>
+            <div class="timeline-tags"><span class="tag tag-sertifikasi">Sertifikasi</span><span class="tag tag-kerjasama">Kerja Sama</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">18 Agustus 2026</div>
+          <div class="timeline-card">
+            <h4>Kunjungan Studi Banding dari Dinas PUPR Provinsi Bali</h4>
+            <p>Tim dari Laboratorium Konstruksi Dinas PUPR Provinsi Bali melakukan studi banding ke UPTD NTB untuk mempelajari sistem manajemen mutu laboratorium dan pengelolaan logbook digital.</p>
+            <div class="timeline-tags"><span class="tag tag-kerjasama">Kerja Sama</span><span class="tag tag-kegiatan">Studi Banding</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Juli 2026</div>
+          <div class="timeline-card">
+            <h4>Pengujian Material Jalan Lingkar Utara Mataram</h4>
+            <p>Pengujian material aspal dan agregat untuk proyek Jalan Lingkar Utara Mataram senilai Rp 45 Miliar, mencakup lebih dari 280 sampel uji Marshall dan ekstraksi kadar aspal.</p>
+            <div class="timeline-tags"><span class="tag tag-kegiatan">Proyek Besar</span><span class="tag tag-kegiatan">Aspal</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--navy);margin-bottom:10px">Butuh Dukungan Pengujian untuk Proyek Anda?</h3>
+  <p style="color:var(--text-sub);margin-bottom:22px;font-size:15px">Hubungi kami untuk konsultasi dan pengajuan layanan pengujian material.</p>
+  <a href="#" onclick="return bukaFormLayananPage(event)" class="cta-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    Ajukan Layanan Sekarang
+  </a>
+</div>
+
+<footer class="kontak-bg" style="padding:28px 20px">
+  <div class="footer">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi — Dinas PUPR Prov. NTB.</span>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Beranda</a>
+        <a href="https://balaibijak.my.id/admin.html" class="footer-link">Login</a>
+        <a href="admin-konten.html" class="footer-link">Kelola Konten Kartu</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('siteHeader').style.position = 'relative';
+  document.getElementById('siteHeader').style.background = 'var(--white)';
+</script>
+<script src="js/konten-shared.js"></script>
+<script src="js/render-kegiatan.js"></script>
+  <script src="js/ajukan-layanan.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+{
+    "kategori": [
+        {
+            "judul": "Material Beton",
+            "subjudul": "Pengujian beton segar dan beton keras sesuai SNI",
+            "tema": "navy",
+            "ikon": "beton",
+            "param": [
+                {
+                    "teks": "Kuat Tekan Beton",
+                    "standar": "SNI 03-1974-2011"
+                },
+                {
+                    "teks": "Uji Slump",
+                    "standar": "SNI 1972:2008"
+                },
+                {
+                    "teks": "Mix Design Beton",
+                    "standar": "SNI 7394:2008"
+                },
+                {
+                    "teks": "Core Drill Beton Existing",
+                    "standar": "SNI 03-2492-2002"
+                }
+            ],
+            "waktu": [
+                "Waktu pengujian: 3–28 hari (sesuai umur beton)",
+                "Hasil: Laporan Hasil Uji (LHU) resmi"
+            ]
+        },
+        {
+            "judul": "Aspal dan Campuran Beraspal",
+            "subjudul": "Uji karakteristik aspal dan Hot Mix Asphalt (HMA)",
+            "tema": "gold",
+            "ikon": "aspal",
+            "param": [
+                {
+                    "teks": "Penetrasi Aspal",
+                    "standar": "SNI 2456:2011"
+                },
+                {
+                    "teks": "Titik Lembek (Ring & Ball)",
+                    "standar": "SNI 2434:2011"
+                },
+                {
+                    "teks": "Marshall Test",
+                    "standar": "SNI 06-2489-1991"
+                },
+                {
+                    "teks": "Ekstraksi Kadar Aspal",
+                    "standar": "SNI 03-6894-2002"
+                },
+                {
+                    "teks": "Gradasi Agregat Campuran",
+                    "standar": "SNI 03-1968-1990"
+                },
+                {
+                    "teks": "Density dan Void (VIM, VMA, VFB)",
+                    "standar": "SNI 03-6757-2002"
+                }
+            ],
+            "waktu": [
+                "Waktu pengujian: 14 hari kerja"
+            ]
+        },
+        {
+            "judul": "Tanah dan Geoteknik",
+            "subjudul": "Klasifikasi, compaction, dan bearing capacity",
+            "tema": "teal",
+            "ikon": "tanah",
+            "param": [
+                {
+                    "teks": "Batas Cair (LL) dan Batas Plastis (PL)",
+                    "standar": "SNI 1967:2008"
+                },
+                {
+                    "teks": "CBR Laboratorium",
+                    "standar": "SNI 03-1744-2012"
+                },
+                {
+                    "teks": "Proctor Standar & Modifikasi",
+                    "standar": "SNI 1742:2008"
+                },
+                {
+                    "teks": "Analisis Saringan Tanah",
+                    "standar": "SNI 3423:2008"
+                },
+                {
+                    "teks": "Analisis Hidrometer",
+                    "standar": "SNI 03-3423-1994"
+                },
+                {
+                    "teks": "Berat Jenis Tanah (Gs)",
+                    "standar": "SNI 1964:2008"
+                }
+            ],
+            "waktu": [
+                "Waktu pengujian: 14 hari kerja"
+            ]
+        },
+        {
+            "judul": "Tanah Dan Geoteknik",
+            "subjudul": "Pengujian Lapangan ( in situ )",
+            "tema": "navy",
+            "ikon": "lab",
+            "param": [
+                {
+                    "teks": "Sondir Ringan 2,5 Ton",
+                    "standar": "SNI 2827:2008"
+                },
+                {
+                    "teks": "CBR Lapangan",
+                    "standar": "SNI 1738:2011 (revisi dari SNI 03-1738-1989)"
+                },
+                {
+                    "teks": "DCP ",
+                    "standar": ""
+                }
+            ],
+            "waktu": []
+        }
+    ]
+}

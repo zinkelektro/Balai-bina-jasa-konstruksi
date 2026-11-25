@@ -1,0 +1,212 @@
+{
+    "profil": [
+        "UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi adalah Unit Pelaksana Teknis Daerah di bawah Dinas Pekerjaan Umum dan Penataan Ruang (PUPR) Provinsi Nusa Tenggara Barat yang bertugas menyelenggarakan pelayanan teknis di bidang jasa konstruksi dan pengujian material bangunan.",
+        "UPTD kami telah melayani ribuan pelanggan dari sektor pemerintah maupun swasta, mulai dari kontraktor, konsultan, hingga instansi pemerintah yang membutuhkan layanan pengujian material konstruksi yang akurat dan terstandar.",
+        "Dengan fasilitas laboratorium yang terakreditasi KAN berdasarkan SNI/ISO/IEC 17025:2017, kami berkomitmen memberikan hasil pengujian yang valid, terpercaya, dan diakui secara nasional maupun internasional."
+    ],
+    "identitas": [
+        {
+            "label": "Nama Lengkap",
+            "nilai": "UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi"
+        },
+        {
+            "label": "Induk",
+            "nilai": "Dinas PUPR Provinsi NTB"
+        },
+        {
+            "label": "Alamat",
+            "nilai": "Jl. Majapahit No. 8, Mataram 83121"
+        },
+        {
+            "label": "Telepon",
+            "nilai": "(0370) 627487"
+        },
+        {
+            "label": "Akreditasi",
+            "nilai": "KAN SNI/ISO 17025:2017"
+        },
+        {
+            "label": "Jam Layanan",
+            "nilai": "Senin–Jumat, 08.00–16.00 WITA"
+        }
+    ],
+    "visi": "Menjadi laboratorium pengujian dan pembinaan jasa konstruksi terdepan di Nusa Tenggara Barat yang profesional, inovatif, dan berstandar internasional.",
+    "misi": [
+        "Menyelenggarakan pengujian material konstruksi yang akurat dan terstandar SNI/ISO",
+        "Meningkatkan kompetensi tenaga kerja jasa konstruksi NTB melalui sertifikasi dan pelatihan",
+        "Mengembangkan fasilitas dan sistem manajemen mutu laboratorium secara berkelanjutan",
+        "Memberikan pelayanan yang cepat, transparan, dan terjangkau bagi masyarakat",
+        "Mendukung pembangunan infrastruktur berkualitas di Provinsi Nusa Tenggara Barat"
+    ],
+    "struktur": [
+        {
+            "tingkat": "pimpinan",
+            "unit": "Material",
+            "nama": "Kepala UPTD",
+            "orang": "Okti Indayani, S.T",
+            "posisi": "Pimpinan Unit Pelaksana Teknis Daerah",
+            "foto": "personel_20260928_155359_929a38.jpg",
+            "kode": "K"
+        },
+        {
+            "tingkat": "kasi",
+            "unit": "",
+            "nama": "Ka. Subbag Tata Usaha",
+            "orang": "Lalu muhamad azwar, S.si",
+            "posisi": "Administrasi, Keuangan, dan Kepegawaian",
+            "foto": "personel_20260928_171019_88efb2.jpg",
+            "kode": "KSU"
+        },
+        {
+            "tingkat": "kasi",
+            "unit": "",
+            "nama": "Kasi Pengujian ",
+            "orang": "",
+            "posisi": "Koordinasi Pengujian Material Konstruksi",
+            "foto": "personel_20260928_171034_319af9.jpg",
+            "kode": "KPL"
+        },
+        {
+            "tingkat": "kasi",
+            "unit": "",
+            "nama": "Kasi Bina Konstruksi",
+            "orang": "",
+            "posisi": "Sertifikasi dan Bimbingan Tenaga Kerja Konstruksi",
+            "foto": "personel_20260928_164333_2dd0cf.jpg",
+            "kode": "KBK"
+        },
+        {
+            "tingkat": "koordinator",
+            "unit": "Material",
+            "nama": "Koordinator Lab Material",
+            "orang": "Lalu Mardani Azmi, S.T",
+            "posisi": "",
+            "foto": "personel_20260928_164321_97c4a0.jpg",
+            "kode": "KLM"
+        },
+        {
+            "tingkat": "koordinator",
+            "unit": "Air",
+            "nama": "Koordinator Lab Air",
+            "orang": "Subhan Arifin, S.T",
+            "posisi": "",
+            "foto": "personel_20260928_171052_14ab32.jpg",
+            "kode": "KLA"
+        },
+        {
+            "tingkat": "koordinator",
+            "unit": "Beton",
+            "nama": "Koordinator Lab Beton",
+            "orang": "Munazir, S.T",
+            "posisi": "",
+            "foto": "personel_20260928_164356_c25058.jpg",
+            "kode": "KLB"
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Material",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Imaduddin Ainul Yaqin",
+            "posisi": "",
+            "foto": "personel_20260928_155605_1a0602.jpg",
+            "kode": "A1"
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Material",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Ragil Mulyono",
+            "posisi": "",
+            "foto": "personel_20260928_164133_597b22.jpg",
+            "kode": "A2"
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Material",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Aditya Pratama ",
+            "posisi": "",
+            "foto": "personel_20260928_170411_f83503.jpg",
+            "kode": "A3"
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Material",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Junaidi Hamdani",
+            "posisi": "",
+            "foto": "personel_20260928_170904_2e2435.jpg",
+            "kode": ""
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Beton",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Achmad Ramli",
+            "posisi": "",
+            "foto": "personel_20260928_170724_f38f26.jpg",
+            "kode": ""
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Air",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Lalu Muhamad Riza",
+            "posisi": "",
+            "foto": "personel_20260928_170535_378f1e.jpg",
+            "kode": "A4"
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Air",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Fatina Solehan",
+            "posisi": "",
+            "foto": "personel_20260928_170637_6f848c.jpg",
+            "kode": ""
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Material",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Fahril",
+            "posisi": "",
+            "foto": "personel_20260928_172338_959625.jpg",
+            "kode": ""
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Material",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Andi Irawan",
+            "posisi": "",
+            "foto": "personel_20260928_172405_da45d6.jpg",
+            "kode": ""
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Beton",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Abdul Aziz",
+            "posisi": "",
+            "foto": "personel_20260928_172445_d97e25.jpg",
+            "kode": ""
+        },
+        {
+            "tingkat": "personel",
+            "unit": "Air",
+            "nama": "Teknisi Laboratorium",
+            "orang": "Yusnawati",
+            "posisi": "",
+            "foto": "personel_20260928_172526_641fe1.jpg",
+            "kode": ""
+        }
+    ],
+    "dasarHukum": [
+        "UU No. 2 Tahun 2017 tentang Jasa Konstruksi",
+        "PP No. 22 Tahun 2020 tentang Peraturan Pelaksanaan UU Jasa Konstruksi",
+        "Peraturan Gubernur NTB tentang Pembentukan, Susunan Organisasi, dan Tata Kerja UPTD",
+        "SNI/ISO/IEC 17025:2017 — Persyaratan Umum Kompetensi Laboratorium Pengujian dan Kalibrasi",
+        "Perda NTB No. 3 Tahun 2026 tentang Retribusi Daerah (Tarif Layanan Pengujian)"
+    ]
+}

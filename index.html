@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi NTB</title>
+<meta name="description" content="Portal Layanan UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi Provinsi Nusa Tenggara Barat">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .preview-overlay{position:fixed;inset:0;background:rgba(8,20,38,.78);display:none;align-items:center;justify-content:center;padding:18px;z-index:3000}
+  .preview-overlay.open{display:flex}
+  .preview-box{background:#fff;width:min(1100px,96vw);height:min(88vh,900px);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.35)}
+  .preview-head{height:58px;flex:0 0 58px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #e6e9ef;background:#fff}
+  .preview-title{font-weight:700;color:#163366;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:15px}
+  .preview-close{border:0;background:#eef1f5;color:#163366;border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:18px}
+  .preview-body{flex:1;min-height:0;background:#f3f5f8;position:relative}
+  .preview-body iframe{width:100%;height:100%;border:0;background:#fff}
+  .preview-body img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;margin:auto;object-fit:contain}
+  .preview-note{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:30px;text-align:center;color:#536174}
+  .preview-note strong{color:#163366}
+  .preview-action{display:inline-flex;align-items:center;gap:7px;padding:10px 15px;border-radius:8px;background:#163366;color:#fff;text-decoration:none}
+  .preview-head-actions{display:flex;align-items:center;gap:8px}
+  .preview-download{display:none;align-items:center;gap:6px;border:0;background:#163366;color:#fff;border-radius:8px;padding:0 14px;height:36px;font-size:12.5px;font-weight:700;text-decoration:none;cursor:pointer}
+  .preview-download.show{display:inline-flex}
+  .preview-office-hint{position:absolute;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid #e6e9ef;padding:10px 16px;font-size:12px;color:#536174;text-align:center}
+  .pgm-attachment{margin-top:10px;border:1px solid #d8dee8;background:#f6f8fb;color:#163366;border-radius:7px;padding:7px 10px;cursor:pointer;font-size:12px;font-weight:600}
+</style>
+</head>
+<body>
+
+
+<header class="site-header" id="siteHeader">
+  <div class="site-header-inner">
+    <a href="#beranda" class="site-brand" aria-label="UPTD Bina Jasa Konstruksi dan Pengujian Material">
+      <img src="assets/logo-uptd.png" class="site-logo" alt="Logo UPTD Provinsi NTB">
+      <div class="site-brand-text">
+        <strong>UPTD</strong>
+        <span>BINA JASA KONSTRUKSI<br>DAN PENGUJIAN MATERIAL</span>
+        <small>PROVINSI NUSA TENGGARA BARAT</small>
+      </div>
+    </a>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Buka menu" onclick="document.getElementById('mainNav').classList.toggle('open')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+
+    <nav id="mainNav" class="main-nav">
+      <a href="#beranda" class="nav-link active"><span class="nav-home"></span> Beranda</a>
+      <a href="tentang.html" class="nav-link">Profil</a>
+      <a href="pengujian-material.html" class="nav-link">Layanan</a>
+      <a href="#berita" class="nav-link">Berita</a>
+      <a href="#pengumuman" class="nav-link">Pengumuman</a>
+      <a href="#unduhan" class="nav-link">Unduhan</a>
+      <a href="admin.html" class="nav-link">Login</a>
+    </nav>
+
+    <div class="header-search" role="search">
+      <span class="search-icon">⌕</span>
+      <input type="search" id="siteSearch" placeholder="Cari informasi..." aria-label="Cari informasi">
+    </div>
+  </div>
+</header>
+
+
+<section class="hero-photo" id="beranda">
+  <div class="hero-photo-overlay"></div>
+  <div class="hero-photo-inner">
+    <div class="hero-copy">
+      <div class="hero-welcome"><span></span> SELAMAT DATANG DI</div>
+      <h1>UPTD Bina Jasa Konstruksi<br>dan Pengujian Material</h1>
+      <h2>Provinsi Nusa Tenggara Barat</h2>
+      <p>Melayani pengujian material konstruksi dengan hasil akurat,<br class="desktop-only"> profesional dan terpercaya untuk mendukung pembangunan<br class="desktop-only"> yang berkualitas dan berkelanjutan.</p>
+      <a href="#layanan" class="hero-button">Lihat Layanan Kami <b>→</b></a>
+    </div>
+    <div class="hero-dots" aria-hidden="true"><i class="active"></i><i></i><i></i></div>
+  </div>
+</section>
+
+
+<section class="quick-links" id="profil">
+  <div class="quick-links-inner">
+    <a class="quick-card" href="laboratorium.html">
+      <img class="quick-card-img" src="assets/card-1.jpg" alt="Laboratorium Pengujian" loading="lazy" decoding="async">
+      <span class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6M10 2v6.5L4.5 19a1 1 0 0 0 .9 1.5h13.2a1 1 0 0 0 .9-1.5L14 8.5V2"/><path d="M7 15h10"/></svg></span>
+      <strong>Laboratorium<br>Pengujian</strong><b>→</b>
+    </a>
+    <a class="quick-card" href="peralatan.html">
+      <img class="quick-card-img" src="assets/card-2.jpg" alt="Peralatan Laboratorium" loading="lazy" decoding="async">
+      <span class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 0 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 0 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 0 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.55 1H21a2 2 0 0 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1z"/></svg></span>
+      <strong>Peralatan<br>Laboratorium</strong><b>→</b>
+    </a>
+    <a class="quick-card" href="pengujian-material.html">
+      <img class="quick-card-img" src="assets/card-3.jpg" alt="Pengujian Material Konstruksi" loading="lazy" decoding="async">
+      <span class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg></span>
+      <strong>Pengujian Material<br>Konstruksi</strong><b>→</b>
+    </a>
+    <a class="quick-card" href="kegiatan.html">
+      <img class="quick-card-img" src="assets/card-4.jpg" alt="Kegiatan Pengujian" loading="lazy" decoding="async">
+      <span class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+      <strong>Kegiatan<br>Pengujian</strong><b>→</b>
+    </a>
+    <a class="quick-card" href="pelayanan.html">
+      <img class="quick-card-img" src="assets/card-5.jpg" alt="Pelayanan Laboratorium" loading="lazy" decoding="async">
+      <span class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span>
+      <strong>Pelayanan<br>Laboratorium</strong><b>→</b>
+    </a>
+    <a class="quick-card" href="tentang.html">
+      <img class="quick-card-img" src="assets/card-6.jpg" alt="Tentang UPTD" loading="lazy" decoding="async">
+      <span class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></span>
+      <strong>Tentang<br>UPTD</strong><b>→</b>
+    </a>
+  </div>
+</section>
+
+
+
+<section class="layanan-bg" id="layanan">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow" id="layananEyebrow">Pilih Jenis Layanan Kami</div>
+      <h2 class="section-title" id="layananTitle">Jenis Layanan</h2>
+      <p class="section-sub" id="layananSub">Tersedia berbagai layanan pengujian material, sertifikasi, dan pembinaan jasa konstruksi yang dapat diajukan secara online maupun langsung.</p>
+    </div>
+    <div class="layanan-grid" id="layananGrid">
+
+      <a href="#layanan" class="layanan-card" onclick="bukaFormLayanan(event,'Sertifikasi Tenaga Ahli Konstruksi')">
+        <div class="layanan-icon-wrap navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0D2545" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="layanan-title">Sertifikasi Tenaga Ahli Konstruksi</div>
+        <div class="layanan-desc">Penerbitan Sertifikat Keahlian (SKA) dan Sertifikat Keterampilan (SKT) bagi tenaga kerja jasa konstruksi.</div>
+        <div class="layanan-arrow">Ajukan sekarang <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#layanan" class="layanan-card" onclick="bukaFormLayanan(event,'Pengujian Material Beton')">
+        <div class="layanan-icon-wrap red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C0272D" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="layanan-title">Pengujian Material Beton</div>
+        <div class="layanan-desc">Uji kuat tekan beton, uji slump, analisis campuran beton (mix design), dan pengujian core drill beton existing.</div>
+        <div class="layanan-arrow">Ajukan sekarang <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#layanan" class="layanan-card" onclick="bukaFormLayanan(event,'Pengujian Aspal dan Campuran Beraspal')">
+        <div class="layanan-icon-wrap gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8B6200" stroke-width="2" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="layanan-title">Pengujian Aspal dan Campuran Beraspal</div>
+        <div class="layanan-desc">Uji penetrasi aspal, marshall test, ekstraksi, gradasi agregat untuk perkerasan jalan dan jembatan.</div>
+        <div class="layanan-arrow">Ajukan sekarang <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#layanan" class="layanan-card" onclick="bukaFormLayanan(event,'Pengujian Tanah dan Geoteknik')">
+        <div class="layanan-icon-wrap teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#14826E" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div class="layanan-title">Pengujian Tanah dan Geoteknik</div>
+        <div class="layanan-desc">Analisis saringan tanah, batas Atterberg, uji kepadatan (CBR, Proctor), dan klasifikasi tanah untuk pondasi.</div>
+        <div class="layanan-arrow">Ajukan sekarang <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#layanan" class="layanan-card" onclick="bukaFormLayanan(event,'Pengujian Baja dan Material Struktur')">
+        <div class="layanan-icon-wrap navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0D2545" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="layanan-title">Pengujian Baja dan Material Struktur</div>
+        <div class="layanan-desc">Uji tarik, uji lentur, analisis tegangan baja tulangan, baja profil, dan material struktur lainnya.</div>
+        <div class="layanan-arrow">Ajukan sekarang <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#layanan" class="layanan-card" onclick="bukaFormLayanan(event,'Pelatihan dan Bimbingan Teknis')">
+        <div class="layanan-icon-wrap red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C0272D" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="layanan-title">Pelatihan dan Bimbingan Teknis</div>
+        <div class="layanan-desc">Bimtek operator konstruksi, pelatihan teknisi laboratorium, dan peningkatan kompetensi tenaga kerja konstruksi.</div>
+        <div class="layanan-arrow">Daftar sekarang <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#layanan" class="layanan-card" onclick="bukaFormLayanan(event,'Konsultasi Teknis Konstruksi')">
+        <div class="layanan-icon-wrap teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#14826E" stroke-width="2" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div class="layanan-title">Konsultasi Teknis Konstruksi</div>
+        <div class="layanan-desc">Layanan konsultasi teknis seputar standar mutu, spesifikasi material, dan persyaratan jasa konstruksi di NTB.</div>
+        <div class="layanan-arrow">Konsultasi <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="alur">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center">Prosedur</div>
+      <h2 class="section-title">Alur Pelayanan Pengujian Lab</h2>
+      <p class="section-sub" style="margin:8px auto 0">Delapan langkah mudah untuk mendapatkan layanan pengujian laboratorium.</p>
+    </div>
+    <div class="alur-grid-wrap">
+      <!-- Baris 1: Langkah 1–4 -->
+      <div class="alur-row-inner">
+        <div class="alur-step">
+          <div class="alur-num">1</div>
+          <div>
+            <div class="alur-step-title">Pelanggan Mengajukan Permohonan</div>
+            <div class="alur-step-desc">Permohonan dapat diajukan melalui WhatsApp, email, atau datang langsung ke kantor UPTD</div>
+          </div>
+        </div>
+        <div class="alur-step">
+          <div class="alur-num">2</div>
+          <div>
+            <div class="alur-step-title">Permohonan Dikaji Ulang</div>
+            <div class="alur-step-desc">UPTD melakukan kaji ulang terhadap permohonan pengujian sesuai kriteria dan standar</div>
+          </div>
+        </div>
+        <div class="alur-step">
+          <div class="alur-num">3</div>
+          <div>
+            <div class="alur-step-title">Pelanggan Memberikan Contoh Uji</div>
+            <div class="alur-step-desc">Mengumpulkan contoh uji. Sampling dapat dilakukan oleh pelanggan atau petugas lab</div>
+          </div>
+        </div>
+        <div class="alur-step">
+          <div class="alur-num">4</div>
+          <div>
+            <div class="alur-step-title">Verifikasi Sampel</div>
+            <div class="alur-step-desc">Petugas lab akan melakukan verifikasi dan pencatatan terhadap sampel yang diterima</div>
+          </div>
+        </div>
+      </div>
+      <!-- Baris 2: Langkah 5–8 -->
+      <div class="alur-row-inner">
+        <div class="alur-step">
+          <div class="alur-num">5</div>
+          <div>
+            <div class="alur-step-title">Pelaksanaan Pengujian</div>
+            <div class="alur-step-desc">Proses pengujian dilaksanakan di laboratorium oleh tenaga teknis yang kompeten</div>
+          </div>
+        </div>
+        <div class="alur-step">
+          <div class="alur-num">6</div>
+          <div>
+            <div class="alur-step-title">Penerbitan Hasil Uji</div>
+            <div class="alur-step-desc">UPTD menyampaikan hasil pengujian kepada pelanggan sesuai format standar</div>
+          </div>
+        </div>
+        <div class="alur-step">
+          <div class="alur-num">7</div>
+          <div>
+            <div class="alur-step-title">Penyerahan Laporan dan Hasil Uji</div>
+            <div class="alur-step-desc">Pelanggan mendapatkan laporan hasil pengujian secara resmi dan terverifikasi</div>
+          </div>
+        </div>
+        <div class="alur-step">
+          <div class="alur-num">8</div>
+          <div>
+            <div class="alur-step-title">Penanganan Keluhan</div>
+            <div class="alur-step-desc">Petugas menindaklanjuti keluhan dari pelanggan apabila terdapat ketidaksesuaian hasil</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section style="background:var(--gray-50)" id="berita">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+      <div>
+        <div class="section-eyebrow">Informasi Terkini</div>
+        <h2 class="section-title">Berita dan Pengumuman</h2>
+      </div>
+      <a href="#" style="font-size:13px;font-weight:600;color:var(--navy-light);text-decoration:none;display:flex;align-items:center;gap:4px">
+        Lihat semua berita
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="berita-grid" id="beritaGrid">
+      <a href="#" class="berita-utama">
+        <div class="berita-img">
+          <span class="berita-tag">Kegiatan</span>
+        </div>
+        <div class="berita-body">
+          <div class="berita-date">15 September 2026</div>
+          <h3 class="berita-title-main">Bimtek Pengujian Kualitas Campuran Aspal Panas untuk Kontraktor Jalan di Wilayah NTB</h3>
+          <p class="berita-excerpt">UPTD Bina Jasa Konstruksi NTB menyelenggarakan bimbingan teknis mengenai standar pengujian campuran aspal panas (Hot Mix Asphalt) yang diikuti oleh 45 peserta dari berbagai kontraktor jalan di seluruh wilayah Nusa Tenggara Barat.</p>
+        </div>
+      </a>
+      <div class="berita-list">
+        <a href="#" class="berita-item">
+          <div class="berita-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="berita-item-title">Laboratorium Geoteknik UPTD NTB Terima Akreditasi KAN SNI/ISO 17025:2017</div>
+            <div class="berita-item-date">10 September 2026</div>
+          </div>
+        </a>
+        <a href="#" class="berita-item">
+          <div class="berita-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="berita-item-title">Peluncuran Sistem Antrian Online Layanan Pengujian Material Konstruksi</div>
+            <div class="berita-item-date">2 September 2026</div>
+          </div>
+        </a>
+        <a href="#" class="berita-item">
+          <div class="berita-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="berita-item-title">Sertifikasi 120 Mandor Konstruksi dalam Rangka Program BPJK 2026</div>
+            <div class="berita-item-date">25 Agustus 2026</div>
+          </div>
+        </a>
+        <a href="#" class="berita-item">
+          <div class="berita-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div>
+            <div class="berita-item-title">Kunjungan Studi Banding Laboratorium Konstruksi dari Dinas PUPR Provinsi Bali</div>
+            <div class="berita-item-date">18 Agustus 2026</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="pengumuman-bg" id="pengumuman">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+      <div>
+        <div class="section-eyebrow">Pemberitahuan</div>
+        <h2 class="section-title">Pengumuman</h2>
+      </div>
+      <a href="#" style="font-size:13px;font-weight:600;color:var(--navy-light);text-decoration:none;display:flex;align-items:center;gap:4px">
+        Semua pengumuman
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="pengumuman-list" id="pengumumanList">
+      <!-- fallback statis -->
+      <div class="pengumuman-item penting" onclick="return false">
+        <div class="pgm-top">
+          <div class="pgm-icon penting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        </div>
+        <div class="pgm-left">
+          <span class="pgm-tag penting">Penting</span>
+          <span class="pgm-title">Perubahan Tarif Layanan Pengujian Material Konstruksi Berdasarkan Perda NTB Nomor 3 Tahun 2026</span>
+          <span class="pgm-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>18 Sep 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="unduhan">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Dokumen</div>
+      <h2 class="section-title">Formulir dan Dokumen Unduhan</h2>
+      <p class="section-sub">Unduh formulir permohonan, persyaratan, dan dokumen pendukung layanan.</p>
+    </div>
+    <div class="unduhan-grid" id="unduhanGrid">
+      <a href="#" class="unduh-card">
+        <div class="unduh-icon pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C0272D" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        </div>
+        <div>
+          <div class="unduh-title">Formulir Permohonan Pengujian Material</div>
+          <div class="unduh-meta">PDF • Formulir</div>
+          <div class="unduh-size">245 KB</div>
+        </div>
+      </a>
+      <a href="#" class="unduh-card">
+        <div class="unduh-icon word">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1E4080" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6m-3 0v6"/></svg>
+        </div>
+        <div>
+          <div class="unduh-title">Formulir Pendaftaran Sertifikasi Tenaga Ahli</div>
+          <div class="unduh-meta">DOCX • Formulir</div>
+          <div class="unduh-size">118 KB</div>
+        </div>
+      </a>
+      <a href="#" class="unduh-card">
+        <div class="unduh-icon pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C0272D" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        </div>
+        <div>
+          <div class="unduh-title">Persyaratan Registrasi Badan Usaha Jasa Konstruksi</div>
+          <div class="unduh-meta">PDF • Panduan</div>
+          <div class="unduh-size">380 KB</div>
+        </div>
+      </a>
+      <a href="#" class="unduh-card">
+        <div class="unduh-icon excel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#14825A" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+        </div>
+        <div>
+          <div class="unduh-title">Daftar Tarif Layanan UPTD Tahun 2026</div>
+          <div class="unduh-meta">XLSX • Referensi</div>
+          <div class="unduh-size">92 KB</div>
+        </div>
+      </a>
+      <a href="#" class="unduh-card">
+        <div class="unduh-icon pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C0272D" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        </div>
+        <div>
+          <div class="unduh-title">SOP Pengambilan Sampel Material di Laboratorium</div>
+          <div class="unduh-meta">PDF • SOP</div>
+          <div class="unduh-size">520 KB</div>
+        </div>
+      </a>
+      <a href="#" class="unduh-card">
+        <div class="unduh-icon word">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1E4080" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6m-3 0v6"/></svg>
+        </div>
+        <div>
+          <div class="unduh-title">Formulir Pendaftaran Bimtek dan Pelatihan 2026</div>
+          <div class="unduh-meta">DOCX • Formulir</div>
+          <div class="unduh-size">156 KB</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="kontak-bg" id="kontak">
+  <div class="section-inner" style="padding-top:60px;padding-bottom:40px">
+    <div class="section-eyebrow" style="color:rgba(255,255,255,0.45);margin-bottom:32px">Informasi Kontak</div>
+    <div class="kontak-grid">
+      <div>
+        <div class="kontak-brand-name">UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi</div>
+        <p class="kontak-brand-desc">Melayani masyarakat jasa konstruksi Nusa Tenggara Barat dalam bidang pengujian material, sertifikasi tenaga kerja konstruksi secara profesional dan berintegritas.</p>
+        <div class="kontak-social">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="kontak-section-title">Alamat &amp; Kontak</div>
+        <div class="kontak-detail">
+          <div class="kontak-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Jl. Majapahit No. 8, Mataram, Nusa Tenggara Barat 83121</span>
+          </div>
+          <div class="kontak-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 5 5l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17v-.08z"/></svg>
+            <span>(0370) 627487</span>
+          </div>
+          <div class="kontak-row" id="kontakWaRow" style="display:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+            <span>WhatsApp: <a href="#" id="kontakWaLink" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline"></a></span>
+          </div>
+          <div class="kontak-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="88fdf8fceca6eae2e3f8e5e3c8e6fceaf8fae7fea6efe7a6e1ec">[email&#160;protected]</a></span>
+          </div>
+          <div class="kontak-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Senin – Jumat, 08.00 – 16.00 WITA</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="kontak-section-title">Tautan Penting</div>
+        <div class="kontak-links">
+          <a href="https://dpu.ntbprov.go.id/" class="kontak-link">Dinas PUPR Provinsi NTB</a>
+          <a href="#" class="kontak-link">LPJK Nasional</a>
+          <a href="https://pu.go.id/" class="kontak-link">Kementerian PUPR RI</a>
+          <a href="#" class="kontak-link">SIJK Online (OSS Konstruksi)</a>
+          <a href="http://kan.or.id/" class="kontak-link">Komite Akreditasi Nasional (KAN)</a>
+          <a href="#" class="kontak-link" onclick="bukaCekStatus(event)">Cek Status Permohonan</a>
+          <a href="/cdn-cgi/l/email-protection#2b5e5b5f4f054941405b46406b455f495b59445d054c4405424f14585e49414e485f16674a5b44594a450e191b7b4e454c4a4f5e4a45" class="kontak-link">Laporan Pengaduan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 UPTD Bina Jasa Konstruksi dan Pengujian Material Konstruksi — Dinas PUPR Prov. NTB. Hak cipta dilindungi.</span>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Kebijakan Privasi</a>
+        <a href="admin.html" class="footer-link">Login</a>
+        <a href="admin.html" class="footer-link">Kelola Konten Kartu</a>
+        <a href="#" class="footer-link">Peta Situs</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<div class="modal-overlay" id="modalLayanan">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <h3>Ajukan Layanan</h3>
+        <p>Isi formulir berikut, tim kami akan menghubungi Anda.</p>
+      </div>
+      <button class="modal-close" onclick="tutupModal('modalLayanan')" aria-label="Tutup">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-steps" id="layananSteps">
+        <div class="m-step active" id="stepIsi"><div class="m-dot">1</div><div class="m-lbl">Isi Data</div></div>
+        <div class="m-line" id="stepLine"></div>
+        <div class="m-step" id="stepTiket"><div class="m-dot">2</div><div class="m-lbl">Tiket Terbit</div></div>
+      </div>
+      <div class="modal-msg" id="layananMsg"></div>
+      <form id="formLayanan" onsubmit="return kirimFormLayanan(event)">
+        <div class="form-group">
+          <label>Jenis Layanan <span class="req">*</span></label>
+          <select name="jenis_layanan" id="jenisLayananSelect" required>
+            <option value="">— Pilih jenis layanan —</option>
+            <option>Sertifikasi Tenaga Ahli Konstruksi</option>
+            <option>Pengujian Material Beton</option>
+            <option>Pengujian Aspal dan Campuran Beraspal</option>
+            <option>Pengujian Tanah dan Geoteknik</option>
+            <option>Pengujian Baja dan Material Struktur</option>
+            <option>Pelatihan dan Bimbingan Teknis</option>
+            <option>Konsultasi Teknis Konstruksi</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nama Pemohon <span class="req">*</span></label>
+            <input type="text" name="nama" required>
+          </div>
+          <div class="form-group">
+            <label>Instansi/Perusahaan</label>
+            <input type="text" name="instansi">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>No. HP/WhatsApp <span class="req">*</span></label>
+            <input type="text" name="no_hp" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Catatan/Keterangan</label>
+          <textarea name="catatan" rows="3" placeholder="Contoh: jumlah sampel, lokasi proyek, dsb."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Lampiran Berkas (opsional — PDF/JPG/PNG/DOCX, maks 8MB)</label>
+          <input type="file" name="lampiran" accept=".pdf,.jpg,.jpeg,.png,.docx,.zip">
+        </div>
+        <button type="submit" class="modal-submit" id="btnKirimLayanan">Kirim Permohonan</button>
+      </form>
+      <div id="layananHasil" style="display:none">
+        <div class="tiket-hasil">
+          <div class="success-check"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7B3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div style="font-size:13px;color:var(--text-sub)">Permohonan berhasil dikirim. Simpan kode tiket berikut:</div>
+          <div class="kode" id="kodeTiketHasil"></div>
+          <div style="font-size:12.5px;color:var(--text-muted)">Gunakan kode ini bersama No. HP/Email Anda untuk mengecek status permohonan.</div>
+        </div>
+        
+        <div class="wa-panel" id="waPanel" style="display:none">
+          <div class="wa-panel-head">
+            <div class="wa-ico"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.56.93.95-3.47-.22-.36A9.43 9.43 0 1 1 12.04 21.5zm0-20.6A11.06 11.06 0 0 0 2.6 17.5L1 23l5.62-1.47A11.06 11.06 0 1 0 12.04.9z"/></svg></div>
+            <div>
+              <div class="wa-panel-nama" id="waPanelNama"></div>
+              <div class="wa-panel-nomor" id="waPanelNomor"></div>
+            </div>
+          </div>
+          <div class="wa-panel-status" id="waPanelStatus"></div>
+          <a class="wa-btn" id="waPanelBtn" href="#" target="_blank" rel="noopener">Buka WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-overlay" id="modalCekStatus">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <h3>Cek Status Permohonan</h3>
+        <p>Masukkan kode tiket dan kontak yang Anda daftarkan.</p>
+      </div>
+      <button class="modal-close" onclick="tutupModal('modalCekStatus')" aria-label="Tutup">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-msg" id="statusMsg"></div>
+      <form id="formCekStatus" onsubmit="return cekStatusPermohonan(event)">
+        <div class="form-group">
+          <label>Kode Tiket <span class="req">*</span></label>
+          <input type="text" name="kode" placeholder="TIK-2609-XXXXX" required>
+        </div>
+        <div class="form-group">
+          <label>No. HP atau Email (saat mendaftar) <span class="req">*</span></label>
+          <input type="text" name="kontak" required>
+        </div>
+        <button type="submit" class="modal-submit">Cek Status</button>
+      </form>
+      <div id="statusHasil" style="display:none;margin-top:16px"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-overlay" id="modalBerita">
+  <div class="modal-berita-box">
+    <div id="modalBeritaInner">
+      <div class="modal-berita-loading">
+        <div class="modal-berita-spinner"></div>
+        <p>Memuat berita…</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  (function() {
+    function animateCount(el, target, duration) {
+      var start = 0;
+      var step = target / (duration / 16);
+      var timer = setInterval(function() {
+        start = Math.min(start + step, target);
+        el.textContent = Math.floor(start).toLocaleString('id-ID');
+        if (start >= target) clearInterval(timer);
+      }, 16);
+    }
+
+    var observed = false;
+    var targets = [
+      { id: 'ctr-tenaga', val: 1248 },
+      { id: 'ctr-uji', val: 3870 },
+      { id: 'ctr-pelatihan', val: 34 }
+    ];
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !observed) {
+          observed = true;
+          targets.forEach(function(t) {
+            var el = document.getElementById(t.id);
+            if (el) animateCount(el, t.val, 1400);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    var heroEl = document.querySelector('.hero-stats');
+    if (heroEl) observer.observe(heroEl);
+
+    /* Smooth scroll nav */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* Active nav on scroll */
+    var sections = document.querySelectorAll('section[id], .info-strip');
+    var navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY + 100;
+      sections.forEach(function(sec) {
+        if (sec.offsetTop <= scrollY && sec.offsetTop + sec.offsetHeight > scrollY) {
+          navLinks.forEach(function(l) { l.classList.remove('active'); });
+          var link = document.querySelector('.nav-link[href="#' + sec.id + '"]');
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { passive: true });
+  })();
+
+  /* ══════════════ INTEGRASI BACKEND (api.php) ══════════════ */
+  var API = 'api.php';
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function formatTanggal(iso) {
+    try {
+      var d = new Date(iso + 'T00:00:00');
+      return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+    } catch (e) { return iso; }
+  }
+
+  /* ── Statistik beranda (hero counter + info strip) ── */
+  fetch(API + '?action=stats').then(function (r) { return r.json(); }).then(function (res) {
+    if (!res.ok) return;
+    var s = res.data;
+    var targets = [
+      { id: 'ctr-tenaga', val: s.tenaga },
+      { id: 'ctr-uji', val: s.uji },
+      { id: 'ctr-pelatihan', val: s.pelatihan }
+    ];
+    var heroEl = document.querySelector('.hero-stats');
+    var already = false;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !already) {
+          already = true;
+          targets.forEach(function (t) {
+            var el = document.getElementById(t.id);
+            if (!el) return;
+            var start = 0, step = t.val / (1400 / 16);
+            var timer = setInterval(function () {
+              start = Math.min(start + step, t.val);
+              el.textContent = Math.floor(start).toLocaleString('id-ID');
+              if (start >= t.val) clearInterval(timer);
+            }, 16);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    if (heroEl) obs.observe(heroEl);
+    var elK = document.getElementById('info-kabkota'); if (elK) elK.textContent = s.kabkota;
+    var elL = document.getElementById('info-lab'); if (elL) elL.textContent = s.lab;
+    var elS = document.getElementById('info-sla'); if (elS) elS.textContent = s.sla;
+  }).catch(function () { /* biarkan nilai statis (fallback) bila backend belum aktif */ });
+
+  /* ── Berita ── */
+  fetch(API + '?action=list_berita&limit=5').then(function (r) { return r.json(); }).then(function (res) {
+    if (!res.ok) return;
+    var grid = document.getElementById('beritaGrid');
+    if (!grid) return;
+    var items = res.data;
+    if (!items.length) { grid.innerHTML = '<div class="empty-state">Belum ada berita yang dipublikasikan.</div>'; return; }
+    var featured = items.find(function (b) { return b.featured; }) || items[0];
+    var rest = items.filter(function (b) { return b.id !== featured.id; }).slice(0, 4);
+    var imgStyle = featured.image ? ('background-image:url(storage/uploads/berita/' + esc(featured.image) + ');background-size:cover;background-position:center') : '';
+    var html = '<a href="#" class="berita-utama" onclick="return bukaBerita(event,' + featured.id + ')">' +
+      '<div class="berita-img" style="' + imgStyle + '"><span class="berita-tag">' + esc(featured.tag) + '</span></div>' +
+      '<div class="berita-body"><div class="berita-date">' + formatTanggal(featured.date) + '</div>' +
+      '<h3 class="berita-title-main">' + esc(featured.title) + '</h3>' +
+      '<p class="berita-excerpt">' + esc(featured.excerpt) + '</p></div></a><div class="berita-list">';
+    rest.forEach(function (b) {
+      html += '<a href="#" class="berita-item" onclick="return bukaBerita(event,' + b.id + ')">' +
+        '<div class="berita-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>' +
+        '<div><div class="berita-item-title">' + esc(b.title) + '</div><div class="berita-item-date">' + formatTanggal(b.date) + '</div></div></a>';
+    });
+    html += '</div>';
+    grid.innerHTML = html;
+  }).catch(function () { /* fallback statis dipertahankan */ });
+
+  function bukaBerita(e, id) {
+    e.preventDefault();
+    var inner = document.getElementById('modalBeritaInner');
+    inner.innerHTML = '<div class="modal-berita-loading"><div class="modal-berita-spinner"></div><p>Memuat berita\u2026</p></div>';
+    bukaModal('modalBerita');
+    fetch(API + '?action=get_berita&id=' + id).then(function (r) { return r.json(); }).then(function (res) {
+      if (!res.ok) {
+        inner.innerHTML = '<div class="modal-berita-loading"><p style="color:var(--red-gov)">Gagal memuat berita.</p><button class="modal-berita-close-btn" onclick="tutupModal(\'modalBerita\')">Tutup</button></div>';
+        return;
+      }
+      var b = res.data;
+      var heroHtml;
+      if (b.image) {
+        heroHtml = '<img class="modal-berita-hero" src="storage/uploads/berita/' + esc(b.image) + '" alt="' + esc(b.title) + '" onerror="this.style.display=\'none\'">';
+      } else {
+        heroHtml = '<div class="modal-berita-hero-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg></div>';
+      }
+      inner.innerHTML =
+        heroHtml +
+        '<div class="modal-berita-head">' +
+          '<div class="modal-berita-meta">' +
+            '<span class="modal-berita-tag">' + esc(b.tag || 'Berita') + '</span>' +
+            '<span class="modal-berita-date">' + formatTanggal(b.date) + '</span>' +
+          '</div>' +
+          '<button class="modal-close" onclick="tutupModal(\'modalBerita\')" aria-label="Tutup" style="flex-shrink:0;margin-top:2px">\u2715</button>' +
+        '</div>' +
+        '<h2 class="modal-berita-title">' + esc(b.title) + '</h2>' +
+        '<div class="modal-berita-divider"></div>' +
+        '<div class="modal-berita-content">' + nl2br(esc(b.content)) + '</div>' +
+        '<button class="modal-berita-close-btn" onclick="tutupModal(\'modalBerita\')">Tutup</button>';
+    }).catch(function () {
+      inner.innerHTML = '<div class="modal-berita-loading"><p style="color:var(--red-gov)">Koneksi gagal. Coba lagi nanti.</p><button class="modal-berita-close-btn" onclick="tutupModal(\'modalBerita\')">Tutup</button></div>';
+    });
+    return false;
+  }
+
+  function nl2br(str) {
+    return str.replace(/\n/g, '<br>');
+  }
+
+  /* ── Pengumuman ── */
+  var PGM_ICON = {
+    penting: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+    jadwal:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+    info:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
+  };
+  var CAL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+  fetch(API + '?action=list_pengumuman&limit=6').then(function (r) { return r.json(); }).then(function (res) {
+    if (!res.ok) return;
+    var list = document.getElementById('pengumumanList');
+    if (!list) return;
+    var items = res.data;
+    if (!items.length) { list.innerHTML = '<div class="empty-state" style="grid-column:1/-1">Belum ada pengumuman.</div>'; return; }
+    var labelMap = { penting: 'Penting', jadwal: 'Jadwal', info: 'Info' };
+    var html = '';
+    items.forEach(function (p) {
+      var tag = p.tag || 'info';
+      var icon = PGM_ICON[tag] || PGM_ICON.info;
+      var lamp = p.lampiran ? '<button class="pgm-attachment" type="button" onclick="bukaPreview(\'pengumuman\',' + p.id + ',\'' + esc(p.lampiran.original_name || p.lampiran.filename || 'Lampiran') + '\')">📎 Lihat lampiran (' + esc((p.lampiran.ext||'').toUpperCase()) + ')</button>' : '';
+      html += '<div class="pengumuman-item ' + esc(tag) + '">' +
+        '<div class="pgm-top"><div class="pgm-icon ' + esc(tag) + '">' + icon + '</div></div>' +
+        '<div class="pgm-left">' +
+          '<span class="pgm-tag ' + esc(tag) + '">' + (labelMap[tag] || 'Info') + '</span>' +
+          '<span class="pgm-title">' + esc(p.title) + '</span>' +
+          '<span class="pgm-date">' + CAL_ICON + formatTanggal(p.date) + '</span>' +
+          lamp +
+        '</div></div>';
+    });
+    list.innerHTML = html;
+  }).catch(function () { /* fallback statis dipertahankan */ });
+
+  /* ── Unduhan ── */
+  var ICON_EXT = {
+    pdf: { color: '#C0272D', cls: 'pdf' },
+    doc: { color: '#1E4080', cls: 'word' }, docx: { color: '#1E4080', cls: 'word' },
+    xls: { color: '#14825A', cls: 'excel' }, xlsx: { color: '#14825A', cls: 'excel' },
+    zip: { color: '#5A6478', cls: 'pdf' }
+  };
+  fetch(API + '?action=list_unduhan').then(function (r) { return r.json(); }).then(function (res) {
+    if (!res.ok) return;
+    var grid = document.getElementById('unduhanGrid');
+    if (!grid) return;
+    var items = res.data;
+    if (!items.length) {
+      grid.innerHTML = '<div class="empty-state">Belum ada dokumen yang diunggah. Silakan cek kembali nanti atau hubungi kami.</div>';
+      return;
+    }
+    var html = '';
+    items.forEach(function (u) {
+      var meta = ICON_EXT[u.ext] || { color: '#5A6478', cls: 'pdf' };
+      var isDoc = ['doc','docx'].indexOf((u.ext||'').toLowerCase()) >= 0;
+      var actionLbl = isDoc ? '⬇ Klik untuk unduh' : '👁 Klik untuk preview';
+      html += '<button type="button" class="unduh-card" style="text-align:left;border:0;cursor:pointer;width:100%" onclick="bukaPreview(\'unduhan\',' + u.id + ',\'' + esc(u.title) + '\')">' +
+        '<div class="unduh-icon ' + meta.cls + '"><svg viewBox="0 0 24 24" fill="none" stroke="' + meta.color + '" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>' +
+        '<div><div class="unduh-title">' + esc(u.title) + '</div><div class="unduh-meta">' + esc((u.ext||'').toUpperCase()) + ' • ' + esc(u.kategori) + '</div><div class="unduh-size">' + esc(u.size) + '</div><div style="font-size:11px;color:#163366;margin-top:6px;font-weight:600">' + actionLbl + '</div></div></button>';
+    });
+    grid.innerHTML = html;
+  }).catch(function () { /* fallback statis dipertahankan */ });
+
+  /* ── Preview dokumen ── */
+  function bukaPreview(type, id, title) {
+    var modal = document.getElementById('previewModal');
+    var body = document.getElementById('previewBody');
+    var titleEl = document.getElementById('previewTitle');
+    var dlBtn = document.getElementById('previewDownloadBtn');
+    var ext = '';
+
+    // Ambil ekstensi dari data API agar preview memilih renderer yang tepat.
+    fetch(API + '?action=' + (type === 'unduhan' ? 'list_unduhan' : 'list_pengumuman')).then(function(r){return r.json();}).then(function(res){
+      var item = (res.data || []).find(function(x){ return Number(x.id) === Number(id); });
+      var file = type === 'unduhan' ? item : (item && item.lampiran);
+      ext = (file && file.ext ? file.ext : '').toLowerCase();
+      var urlInline = API + '?action=download&type=' + encodeURIComponent(type) + '&id=' + encodeURIComponent(id) + '&inline=1';
+      var urlUnduh = API + '?action=download&type=' + encodeURIComponent(type) + '&id=' + encodeURIComponent(id);
+      titleEl.textContent = title || 'Preview berkas';
+      body.innerHTML = '';
+
+      // Tombol unduh di header selalu aktif — jadi berkas tetap bisa diambil
+      // meskipun pratinjau di bawah ini gagal (mis. Google Viewer tidak bisa memuat).
+      dlBtn.href = urlUnduh;
+      dlBtn.classList.add('show');
+
+      if (['pdf'].indexOf(ext) >= 0) {
+        body.innerHTML = '<iframe src="' + urlInline + '" title="Preview PDF"></iframe>';
+      } else if (['jpg','jpeg','png','gif','webp'].indexOf(ext) >= 0) {
+        body.innerHTML = '<img src="' + urlInline + '" alt="' + esc(title || 'Preview gambar') + '">';
+      } else if (['doc','docx'].indexOf(ext) >= 0) {
+        // Tanpa preview untuk dokumen Word — langsung arahkan ke unduhan.
+        body.innerHTML = '<div class="preview-note">' +
+          '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#1E4080" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' +
+          '<strong>Berkas Dokumen Word (.' + esc(ext) + ')</strong>' +
+          '<span>Dokumen Word tidak ditampilkan langsung di halaman ini. Unduh berkasnya, lalu buka dengan Microsoft Word atau aplikasi office lain di perangkat Anda.</span>' +
+          '<a class="preview-action" href="' + urlUnduh + '">⬇ Unduh Berkas</a>' +
+          '</div>';
+      } else if (['xls','xlsx'].indexOf(ext) >= 0) {
+        // Google Viewer hanya bekerja jika server dapat diakses publik dan
+        // kadang tetap gagal memuat berkas Office — karena itu tombol
+        // "Unduh Berkas" di atas selalu tersedia sebagai jalan pasti.
+        var viewer = 'https://docs.google.com/gview?embedded=1&url=' + encodeURIComponent(location.origin + location.pathname.replace(/[^/]*$/, '') + urlInline);
+        body.innerHTML = '<iframe src="' + viewer + '" title="Preview dokumen"></iframe>' +
+          '<div class="preview-office-hint">Pratinjau dokumen Office bergantung pada layanan pihak ketiga dan tidak selalu berhasil dimuat. Bila kosong/gagal, gunakan tombol <b>⬇ Unduh Berkas</b> di pojok kanan atas.</div>';
+      } else {
+        body.innerHTML = '<div class="preview-note"><strong>Preview tidak tersedia untuk format .' + esc(ext || 'file') + '</strong><span>Gunakan tombol unduh di pojok kanan atas untuk melihat berkas ini.</span></div>';
+      }
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }).catch(function(){
+      titleEl.textContent = title || 'Preview berkas';
+      var urlUnduh = API + '?action=download&type=' + encodeURIComponent(type) + '&id=' + encodeURIComponent(id);
+      dlBtn.href = urlUnduh;
+      dlBtn.classList.add('show');
+      body.innerHTML = '<div class="preview-note"><strong>Preview gagal dimuat.</strong><span>Gunakan tombol unduh di pojok kanan atas.</span></div>';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  function tutupPreview() {
+    var modal = document.getElementById('previewModal');
+    modal.classList.remove('open');
+    document.getElementById('previewBody').innerHTML = '';
+    document.getElementById('previewDownloadBtn').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') tutupPreview(); });
+
+  /* ── Modal umum ── */
+  function bukaModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function tutupModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
+  document.querySelectorAll('.modal-overlay').forEach(function (ov) {
+    ov.addEventListener('click', function (e) { if (e.target === ov) tutupModal(ov.id); });
+  });
+
+  /* ── Kontak WhatsApp instansi ── */
+  var WA = { aktif: false };
+  fetch(API + '?action=kontak_info').then(function (r) { return r.json(); }).then(function (res) {
+    if (!res.ok || !res.data.wa_aktif) return;
+    WA = { aktif: true, nomor: res.data.wa_number, tampil: res.data.wa_tampil };
+    var row = document.getElementById('kontakWaRow');
+    var link = document.getElementById('kontakWaLink');
+    if (row && link) {
+      link.textContent = res.data.wa_tampil;
+      link.href = 'https://wa.me/' + res.data.wa_number;
+      row.style.display = '';
+    }
+  }).catch(function () { /* WhatsApp tidak aktif */ });
+
+  function bukaFormLayanan(e, jenis) {
+    if (e) e.preventDefault();
+    document.getElementById('formLayanan').style.display = '';
+    document.getElementById('layananHasil').style.display = 'none';
+    document.getElementById('waPanel').style.display = 'none';
+    document.getElementById('layananMsg').className = 'modal-msg';
+    if (jenis) document.getElementById('jenisLayananSelect').value = jenis;
+    setLayananStep(1);
+    bukaModal('modalLayanan');
+    return false;
+  }
+
+  function setLayananStep(n) {
+    var stepIsi = document.getElementById('stepIsi');
+    var stepTiket = document.getElementById('stepTiket');
+    var line = document.getElementById('stepLine');
+    stepIsi.className = 'm-step' + (n >= 1 ? ' active' : '');
+    if (n >= 2) { stepIsi.className = 'm-step done'; stepTiket.className = 'm-step active'; line.className = 'm-line done'; }
+    else { stepTiket.className = 'm-step'; line.className = 'm-line'; }
+  }
+
+  function kirimFormLayanan(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = document.getElementById('btnKirimLayanan');
+    var msg = document.getElementById('layananMsg');
+    msg.className = 'modal-msg'; msg.textContent = '';
+    btn.disabled = true; btn.textContent = 'Mengirim...';
+
+    // Buka tab kosong SEKARANG (masih dalam aksi klik pengguna) agar tidak diblokir popup blocker.
+    // Tab ini diarahkan ke WhatsApp setelah permohonan berhasil, atau ditutup bila gagal.
+    var waWin = null;
+    if (WA.aktif) {
+      try {
+        waWin = window.open('', '_blank');
+        if (waWin) waWin.document.write('<p style="font:16px system-ui;padding:24px">Menyiapkan WhatsApp&hellip;</p>');
+      } catch (err) { waWin = null; }
+    }
+    function tutupWaWin() { try { if (waWin) waWin.close(); } catch (err) {} }
+
+    var fd = new FormData(form);
+    fd.append('action', 'submit_permohonan');
+    fetch(API, { method: 'POST', body: fd }).then(function (r) { return r.json(); }).then(function (res) {
+      btn.disabled = false; btn.textContent = 'Kirim Permohonan';
+      if (!res.ok) { tutupWaWin(); msg.className = 'modal-msg err show'; msg.textContent = res.error || 'Gagal mengirim permohonan.'; return; }
+      form.style.display = 'none';
+      document.getElementById('kodeTiketHasil').textContent = res.kode_tiket;
+      document.getElementById('layananHasil').style.display = '';
+      setLayananStep(2);
+      tampilPanelWa(res.wa, waWin);
+    }).catch(function () {
+      tutupWaWin();
+      btn.disabled = false; btn.textContent = 'Kirim Permohonan';
+      msg.className = 'modal-msg err show'; msg.textContent = 'Tidak dapat terhubung ke server. Coba lagi nanti.';
+    });
+    return false;
+  }
+
+  /* Panel Kontak WhatsApp: tampil setelah permohonan terkirim + otomatis membuka chat WhatsApp */
+  function tampilPanelWa(wa, waWin) {
+    var panel = document.getElementById('waPanel');
+    if (!wa || !wa.url) { try { if (waWin) waWin.close(); } catch (err) {} panel.style.display = 'none'; return; }
+    document.getElementById('waPanelNama').textContent = wa.nama;
+    document.getElementById('waPanelNomor').textContent = wa.nomor;
+    var btn = document.getElementById('waPanelBtn');
+    var status = document.getElementById('waPanelStatus');
+    btn.href = wa.url;
+    panel.style.display = '';
+    var terbuka = false;
+    try {
+      if (waWin && !waWin.closed) { waWin.location.href = wa.url; terbuka = true; }
+      else { terbuka = !!window.open(wa.url, '_blank'); }
+    } catch (err) { terbuka = false; }
+    status.textContent = terbuka
+      ? 'WhatsApp dibuka otomatis di tab baru dengan pesan berisi kode tiket Anda. Tekan Kirim di WhatsApp untuk menghubungi petugas.'
+      : 'Klik tombol di bawah untuk menghubungi petugas via WhatsApp. Pesan berisi kode tiket sudah disiapkan.';
+  }
+
+  function bukaCekStatus(e) {
+    if (e) e.preventDefault();
+    document.getElementById('formCekStatus').style.display = '';
+    document.getElementById('formCekStatus').reset();
+    document.getElementById('statusHasil').style.display = 'none';
+    document.getElementById('statusMsg').className = 'modal-msg';
+    bukaModal('modalCekStatus');
+    return false;
+  }
+
+  function buildStatusTimeline(status) {
+    var rejected = status === 'ditolak';
+    var order = { diajukan: 0, diproses: 1, selesai: 2, ditolak: 2 };
+    var cur = order[status] !== undefined ? order[status] : 0;
+    var steps = [
+      { key: 'diajukan', label: 'Diajukan' },
+      { key: 'diproses', label: 'Diproses' },
+      { key: rejected ? 'ditolak' : 'selesai', label: rejected ? 'Ditolak' : 'Selesai' }
+    ];
+    var html = '<div class="status-timeline' + (rejected ? ' rejected' : '') + '">';
+    steps.forEach(function (s, i) {
+      var cls = i < cur ? 'done' : (i === cur ? (i === 2 ? 'done current' : 'current') : '');
+      var icon = i < cur ? '✓' : (i + 1);
+      html += '<div class="tl-step ' + cls + '"><div class="tl-line"></div><div class="tl-dot">' + icon + '</div><div class="tl-lbl">' + s.label + '</div></div>';
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function cekStatusPermohonan(e) {
+    e.preventDefault();
+    var form = e.target;
+    var msg = document.getElementById('statusMsg');
+    var hasil = document.getElementById('statusHasil');
+    msg.className = 'modal-msg'; hasil.style.display = 'none';
+    var kode = encodeURIComponent(form.kode.value.trim());
+    var kontak = encodeURIComponent(form.kontak.value.trim());
+    fetch(API + '?action=cek_status&kode=' + kode + '&kontak=' + kontak).then(function (r) { return r.json(); }).then(function (res) {
+      if (!res.ok) { msg.className = 'modal-msg err show'; msg.textContent = res.error || 'Data tidak ditemukan.'; return; }
+      var d = res.data;
+      hasil.innerHTML = '<div class="status-hasil">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
+        '<strong style="font-family:var(--font-display)">' + esc(d.kode_tiket) + '</strong>' +
+        '<span class="status-badge ' + esc(d.status) + '">' + esc(d.status) + '</span></div>' +
+        buildStatusTimeline(d.status) +
+        '<div style="font-size:13.5px;color:var(--text-sub);line-height:1.7">' +
+        '<div><b>Pemohon:</b> ' + esc(d.nama) + '</div>' +
+        '<div><b>Layanan:</b> ' + esc(d.jenis_layanan) + '</div>' +
+        '<div><b>Diajukan:</b> ' + esc(d.created_at) + '</div>' +
+        (d.catatan_admin ? '<div style="margin-top:8px;padding:10px;background:var(--gray-50);border-radius:8px"><b>Catatan Petugas:</b> ' + esc(d.catatan_admin) + '</div>' : '') +
+        '</div></div>';
+      hasil.style.display = '';
+    }).catch(function () {
+      msg.className = 'modal-msg err show'; msg.textContent = 'Tidak dapat terhubung ke server. Coba lagi nanti.';
+    });
+    return false;
+  }
+</script>
+<!-- MODAL PREVIEW DOKUMEN -->
+<div class="preview-overlay" id="previewModal" onclick="if(event.target===this)tutupPreview()">
+  <div class="preview-box" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+    <div class="preview-head">
+      <div class="preview-title" id="previewTitle">Preview Berkas</div>
+      <div class="preview-head-actions">
+        <a class="preview-download" id="previewDownloadBtn" href="#" target="_blank" rel="noopener">⬇ Unduh Berkas</a>
+        <button class="preview-close" type="button" onclick="tutupPreview()" aria-label="Tutup">✕</button>
+      </div>
+    </div>
+    <div class="preview-body" id="previewBody"></div>
+  </div>
+</div>
+
+<script src="js/konten-shared.js"></script>
+<script src="js/render-beranda.js"></script>
+<script>
+/* Tautan cepat: index.html?ajukan=1[&jenis=Nama Layanan] langsung membuka formulir pengajuan layanan */
+(function(){
+  var p=new URLSearchParams(location.search);
+  if(!p.get('ajukan'))return;
+  var jenis=p.get('jenis')||'';
+  window.__jenisTertunda=jenis;
+  function buka(){
+    if(typeof window.bukaFormLayanan==='function'){
+      window.bukaFormLayanan(null,jenis);
+      if(history.replaceState)history.replaceState(null,'',location.pathname+'#layanan');
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',buka);else buka();
+})();
+</script>
+<script>
+(function(){
+  var q=document.getElementById('siteSearch');
+  if(!q)return;
+  q.addEventListener('keydown',function(e){
+    if(e.key!=='Enter')return;
+    var term=q.value.trim().toLowerCase();
+    if(!term)return;
+    var targets=document.querySelectorAll('h2,h3,.section-title,.layanan-title,.berita-item-title,.pengumuman-title,.unduhan-title');
+    for(var i=0;i<targets.length;i++){
+      if((targets[i].textContent||'').toLowerCase().indexOf(term)>-1){
+        var el=targets[i];
+        el.scrollIntoView({behavior:'smooth',block:'center'});
+        el.style.outline='3px solid rgba(255,193,7,.65)';
+        setTimeout(function(){el.style.removeProperty('outline')},1800);
+        break;
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

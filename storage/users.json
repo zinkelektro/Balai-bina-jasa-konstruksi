@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "username": "zianddavid",
+        "name": "Administrator",
+        "role": "admin",
+        "password_hash": "$2y$10$ayqrx9s2Ef1i3AavNG2x2OoYX4vS/bltcwc5FkFSaKVzXEvc.6rdy",
+        "created_at": "2026-09-22 23:49:00"
+    },
+    {
+        "id": 2,
+        "username": "andi_irawan",
+        "name": "Andi irawan",
+        "role": "editor",
+        "password_hash": "$2y$10$Hit82o59UyYfsmnTawJHiuiYd/2FP/uiASWoP1jMKl0RYY0OHrMDS",
+        "created_at": "2026-09-22 16:21:29"
+    }
+]

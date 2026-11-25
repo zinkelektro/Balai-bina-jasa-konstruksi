@@ -1,0 +1,37 @@
+{
+    "header": {
+        "eyebrow": "Pilih Jenis Layanan Kami",
+        "judul": "Jenis Layanan",
+        "sub": "Tersedia berbagai layanan pengujian material dan pembinaan jasa konstruksi yang dapat diajukan."
+    },
+    "layanan": [
+        {
+            "judul": "Pengujian Material Beton",
+            "desc": "Uji kuat tekan beton, uji slump, analisis campuran beton (mix design), dan pengujian core drill beton existing.",
+            "tema": "red",
+            "ikon": "jam",
+            "tombol": "Ajukan sekarang"
+        },
+        {
+            "judul": "Pengujian Aspal dan Campuran Beraspal",
+            "desc": "Uji penetrasi aspal, marshall test, ekstraksi, gradasi agregat untuk perkerasan jalan dan jembatan.",
+            "tema": "gold",
+            "ikon": "aspal",
+            "tombol": "Ajukan sekarang"
+        },
+        {
+            "judul": "Pengujian Tanah dan Geoteknik",
+            "desc": "Analisis saringan tanah, batas Atterberg, uji kepadatan (CBR, Proctor), dan klasifikasi tanah untuk pondasi.",
+            "tema": "teal",
+            "ikon": "tanah",
+            "tombol": "Ajukan sekarang"
+        },
+        {
+            "judul": "Konsultasi Teknis Konstruksi",
+            "desc": "Layanan konsultasi teknis seputar standar mutu, spesifikasi material, dan persyaratan jasa konstruksi di NTB.",
+            "tema": "teal",
+            "ikon": "pensil",
+            "tombol": "Konsultasi"
+        }
+    ]
+}

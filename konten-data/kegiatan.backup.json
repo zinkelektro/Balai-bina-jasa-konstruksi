@@ -1,0 +1,20 @@
+{
+    "statistik": [
+        {
+            "angka": "3.870",
+            "judul": "Total Sampel Diuji",
+            "desc": "Seluruh sampel material konstruksi yang telah diuji di laboratorium UPTD sepanjang 2026, meliputi beton, aspal, tanah, dan baja."
+        },
+        {
+            "angka": "1.248",
+            "judul": "Tenaga Kerja Tersertifikasi",
+            "desc": "Mandor, operator, dan tenaga ahli konstruksi yang telah mendapatkan Sertifikat Keahlian (SKA) dan Keterampilan (SKT)."
+        },
+        {
+            "angka": "18",
+            "judul": "Proyek Infrastruktur Dilayani",
+            "desc": "Proyek infrastruktur strategis provinsi NTB yang mendapatkan dukungan pengujian material dari UPTD."
+        }
+    ],
+    "timeline": []
+}
